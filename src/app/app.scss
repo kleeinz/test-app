@@ -1,5 +1,25 @@
 // http://ionicframework.com/docs/theming/
 
+.bg-color {
+  // background: #262827;
+  background: $background-color;
+}
+
+.toolbar-background {
+  background-color: $background-color;
+}
+
+.toolbar-title {
+  color: $toolbar-title-color;
+}
+
+.transparent {
+  background: transparent;
+}
+
+ion-header ion-icon.back-button-icon.icon {
+  color: $toolbar-title-color;
+}
 
 // App Global Sass
 // --------------------------------------------------

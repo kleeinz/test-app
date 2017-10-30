@@ -1,4 +1,4 @@
-<ion-content class="bg-color">
+<ion-content padding class="bg-color margin-login">
   <h4 text-center class="title-font-color">
     Test<strong>App</strong>
   </h4>
@@ -15,8 +15,10 @@
       </ion-label>
       <ion-input type="password" placeholder="Password"></ion-input>
     </ion-item>
-    <button ion-button no-padding small clear class="item-font-color" margin-top>Forgot your password?</button>
-    <button ion-button full color="signin" margin-top>Sign in</button>
-    <button ion-button full color="signup" margin-top>Sign up</button>
+    <button
+      ion-button no-padding small
+      clear class="item-font-color" margin-top [navPush]="forgotPage">Forgot your password?</button>
+    <button ion-button full color="signin" margin-top [navPush]="clientsPage">Sign in</button>
+    <button ion-button full color="signup" margin-top [navPush]="signupPage">Sign up</button>
   </ion-list>
 </ion-content>
