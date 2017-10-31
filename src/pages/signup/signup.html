@@ -1,25 +1,27 @@
 <menu-header title="Sign Up"></menu-header>
 <ion-content padding margin-top>
   <ion-list inset margin-top>
-    <ion-item class="transparent item-font-color">
-      <ion-label>
-        <ion-icon name="person"></ion-icon>
-      </ion-label>
-      <ion-input type="email" placeholder="Email"></ion-input>
-    </ion-item>
-    <ion-item class="transparent item-font-color" margin-top>
-      <ion-label>
-        <ion-icon name="unlock"></ion-icon>
-      </ion-label>
-      <ion-input type="password" placeholder="Password"></ion-input>
-    </ion-item>
-    <ion-item class="transparent item-font-color" margin-top>
-      <ion-label>
-        <ion-icon name="checkmark"></ion-icon>
-      </ion-label>
-      <ion-input type="password" placeholder="Confirm Password"></ion-input>
-    </ion-item>
-    <button ion-button full color="signin" margin-top>Create</button>
-    <button ion-button full color="signup" margin-top>Restore</button>
+    <form #sf="ngForm" (ngSubmit)="onSignup(sf)">
+      <ion-item class="transparent item-font-color">
+        <ion-label>
+          <ion-icon name="person"></ion-icon>
+        </ion-label>
+        <ion-input type="email" placeholder="Email" required ngModel name="email"></ion-input>
+      </ion-item>
+      <ion-item class="transparent item-font-color" margin-top>
+        <ion-label>
+          <ion-icon name="unlock"></ion-icon>
+        </ion-label>
+        <ion-input type="password" placeholder="Password" required ngModel name="password"></ion-input>
+      </ion-item>
+      <!-- <ion-item class="transparent item-font-color" margin-top>
+        <ion-label>
+          <ion-icon name="checkmark"></ion-icon>
+        </ion-label>
+        <ion-input type="password" placeholder="Confirm Password"></ion-input>
+      </ion-item> -->
+      <button type="submit" ion-button full color="signin" margin-top [disabled]="!sf.valid">Sign up</button>
+      <button type="button" ion-button full color="signup" margin-top (click)="sf.reset()">Restore</button>
+    </form>
   </ion-list>
 </ion-content>

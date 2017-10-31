@@ -1,25 +1,38 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NgForm } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
+import { LoadingController, AlertController } from 'ionic-angular';
 
-/**
- * Generated class for the SignupPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
-@IonicPage()
 @Component({
   selector: 'page-signup',
   templateUrl: 'signup.html',
 })
 export class SignupPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private authService: AuthService,
+    private loadingController: LoadingController,
+    private alertController: AlertController) {
+
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SignupPage');
+  public onSignup(sf: NgForm) {
+    const loading = this.loadingController.create({
+      content: 'Creating your account...'
+    });
+    loading.present();
+    this.authService.signup(sf.value.email, sf.value.password)
+      .then(data => {
+        loading.dismiss();
+      })
+      .catch(error => {
+        loading.dismiss();
+        const alert = this.alertController.create({
+          title: 'Signup failed!',
+          message: error.message,
+          buttons: ['Ok']
+        });
+        alert.present();
+      });
   }
 
 }

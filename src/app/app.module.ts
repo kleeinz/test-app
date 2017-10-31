@@ -15,6 +15,9 @@ import { SignupPage } from '../pages/signup/signup';
 import { ForgotPage } from '../pages/forgot/forgot';
 import { ClientsPage } from '../pages/clients/clients';
 
+// Services
+import { AuthService } from '../services/auth.service';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -40,6 +43,7 @@ import { ClientsPage } from '../pages/clients/clients';
   providers: [
     StatusBar,
     SplashScreen,
+    AuthService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
