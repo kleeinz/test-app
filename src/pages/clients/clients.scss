@@ -1,3 +1,26 @@
 page-clients {
+    .bg-white {
+      background: white;
+    }
 
+    .bg-footer-card {
+      background: #D7DADF;
+      border-top: 1px solid #95989D;
+    }
+
+    .border-footer-bottom {
+      border-bottom: 1px solid #95989D;
+    }
+
+    .strong-color {
+      color: rgb(153,153,153);
+    }
+
+    .light-color {
+      color: rgb(102,102,102);
+    }
+
+    .font-size-card {
+      font-size: 12px;
+    }
 }

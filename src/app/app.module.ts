@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 
 // Components
 import { MenuHeaderComponent } from './components/shared/menu-header.component';
+import { ClientComponent } from './components/client/client.component';
 
 // Pages
 import { SigninPage } from '../pages/signin/signin';
@@ -25,7 +26,8 @@ import { AuthService } from '../services/auth.service';
     SignupPage,
     ForgotPage,
     MenuHeaderComponent,
-    ClientsPage
+    ClientsPage,
+    ClientComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,8 @@ import { AuthService } from '../services/auth.service';
     SignupPage,
     ForgotPage,
     MenuHeaderComponent,
-    ClientsPage
+    ClientsPage,
+    ClientComponent
   ],
   providers: [
     StatusBar,
