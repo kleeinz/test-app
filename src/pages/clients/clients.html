@@ -3,53 +3,19 @@
 
 <ion-content padding margin-top>
   <client
-    company="Compañia"
-    contactName="Martin McFly"
+    company="Company"
+    fullname="Martin McFly"
     gender="Male"
     email="martin@cpy.com"
     product="Pc"
     phone="331558999"
-    lastUpate="4d ago">  
+    lastUpdate="4d ago">
   </client>
-  <!-- <ion-card class="bg-white">
-    <ion-item class="bg-white border-footer-bottom">
-      <ion-avatar item-start>
-        <img src="../../assets/imgs/user-profile.png">
-      </ion-avatar>
-      <h2 class="strong-color">Compañia</h2>
-      <p class="light-color">Martin McFly</p>
-    </ion-item>
-    <ion-card-content>
-      <ion-row class="light-color font-size-card">
-        <ion-col>
-          <ion-label><strong>Gender:</strong> Male</ion-label>
-          <ion-label><strong>Product</strong>: PC</ion-label>
-        </ion-col>
-        <ion-col>
-          <ion-label><strong>Email:</strong> martin@company.com</ion-label>
-          <ion-label><strong>Phone:</strong> 3111034715</ion-label>
-        </ion-col>
-      </ion-row>
-    </ion-card-content>
-    <ion-row class="bg-footer-card">
-      <ion-col>
-        <button ion-button icon-left clear small color="signin">
-          <ion-icon name="time"></ion-icon>
-          <div>4 years</div>
-        </button>
-      </ion-col>
-      <ion-col>
-        <button ion-button icon-left clear small color="warning">
-          <ion-icon name="brush"></ion-icon>
-          <div>Edit</div>
-        </button>
-      </ion-col>
-      <ion-col>
-        <button ion-button icon-left clear small color="danger">
-          <ion-icon name="trash"></ion-icon>
-          <div>Delete</div>
-        </button>
-      </ion-col>
-    </ion-row>
-  </ion-card> -->
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons end>
+      <button ion-fab color="signup" mini (click)="onAddClient()"><ion-icon name="add"></ion-icon></button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

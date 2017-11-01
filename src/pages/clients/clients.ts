@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { EditClientPage } from './edit-client/edit-client';
 
 /**
  * Generated class for the ClientsPage page.
@@ -20,6 +21,10 @@ export class ClientsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ClientsPage');
+  }
+
+  onAddClient(){
+    this.navCtrl.push(EditClientPage, {action: 'New'});
   }
 
 }

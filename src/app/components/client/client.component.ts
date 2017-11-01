@@ -5,11 +5,11 @@ import { Component, Input } from '@angular/core';
   templateUrl: './client.component.html'
 })
 export class ClientComponent {
-  @Input() company:string = 'Compañia';
-  @Input() contactName:string = 'Martin McFly';
-  @Input() gender:string = 'Male';
-  @Input() email:string = 'martin@cpy.com';
-  @Input() product:string = 'PC';
-  @Input() phone:string = '3111585799';
-  @Input() lastUpdate: string = '4d ago';
+  @Input() company:string;
+  @Input() fullname:string;
+  @Input() gender:string;
+  @Input() email:string;
+  @Input() product:string;
+  @Input() phone:string;
+  @Input() lastUpdate:string;
 }

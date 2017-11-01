@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 
@@ -15,9 +16,11 @@ import { SigninPage } from '../pages/signin/signin';
 import { SignupPage } from '../pages/signup/signup';
 import { ForgotPage } from '../pages/forgot/forgot';
 import { ClientsPage } from '../pages/clients/clients';
+import { EditClientPage } from '../pages/clients/edit-client/edit-client';
 
 // Services
 import { AuthService } from '../services/auth.service';
+import { GenericService } from '../services/generic.service';
 
 @NgModule({
   declarations: [
@@ -27,10 +30,12 @@ import { AuthService } from '../services/auth.service';
     ForgotPage,
     MenuHeaderComponent,
     ClientsPage,
+    EditClientPage,
     ClientComponent
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -41,12 +46,14 @@ import { AuthService } from '../services/auth.service';
     ForgotPage,
     MenuHeaderComponent,
     ClientsPage,
+    EditClientPage,
     ClientComponent
   ],
   providers: [
     StatusBar,
     SplashScreen,
     AuthService,
+    GenericService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
