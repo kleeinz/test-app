@@ -7,7 +7,7 @@ export class GenericService{
     this.clients.push(new ClientModel(
       company, fullname, gender, email, phone, product
     ));
-    console.log(this.clients);
+    console.log("Service: ", this.clients.slice());
   }
 
   getItems() {
@@ -19,7 +19,10 @@ export class GenericService{
     this.clients[index] = new ClientModel(company, fullname, gender, email, phone, product);
   }
 
-  removeItem(index: number) {
-    this.clients.splice(index, 1);
+  removeItem(key: any) {
+    const position = this.clients.findIndex((clientEl: ClientModel) => {
+      return clientEl.email == key;
+    });
+    this.clients.splice(position, 1);
   }
 }

@@ -2,15 +2,7 @@
 
 
 <ion-content padding margin-top>
-  <client
-    company="Company"
-    fullname="Martin McFly"
-    gender="Male"
-    email="martin@cpy.com"
-    product="Pc"
-    phone="331558999"
-    lastUpdate="4d ago">
-  </client>
+  <client (removeClient)="onRemoveClient($event)" *ngFor="let client of clients" [client]="client"></client>
 </ion-content>
 <ion-footer>
   <ion-toolbar>

@@ -3,18 +3,18 @@
     <ion-avatar item-start>
       <img src="../../assets/imgs/user-profile.png">
     </ion-avatar>
-    <h2 class="strong-color">{{ company }}</h2>
-    <p class="light-color">{{ fullname }}</p>
+    <h2 class="strong-color">{{ client.company }}</h2>
+    <p class="light-color">{{ client.fullname }}</p>
   </ion-item>
   <ion-card-content>
     <ion-row class="light-color font-size-card">
       <ion-col>
-        <ion-label><strong>Gender:</strong> {{ gender }}</ion-label>
-        <ion-label><strong>Product</strong>: {{ product }}</ion-label>
+        <ion-label><strong>Gender:</strong> {{ client.gender }}</ion-label>
+        <ion-label><strong>Product:</strong> {{ client.product }}</ion-label>
       </ion-col>
       <ion-col>
-        <ion-label><strong>Email:</strong> {{ email }}</ion-label>
-        <ion-label><strong>Phone:</strong> {{ phone }}</ion-label>
+        <ion-label><strong>Email:</strong> {{ client.email }}</ion-label>
+        <ion-label><strong>Phone:</strong> {{ client.phone }}</ion-label>
       </ion-col>
     </ion-row>
   </ion-card-content>
@@ -22,7 +22,7 @@
     <ion-col>
       <button ion-button icon-left clear small color="signin">
         <ion-icon name="time"></ion-icon>
-        <div>{{ lastUpdate }}</div>
+        <div>4D Ago</div>
       </button>
     </ion-col>
     <ion-col>
@@ -32,7 +32,7 @@
       </button>
     </ion-col>
     <ion-col>
-      <button ion-button icon-left clear small color="danger">
+      <button (click)="onRemoveClient()" ion-button icon-left clear small color="danger">
         <ion-icon name="trash"></ion-icon>
         <div>Delete</div>
       </button>

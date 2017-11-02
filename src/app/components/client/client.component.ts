@@ -1,15 +1,15 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { ClientModel } from '../../../models/client.model';
 
 @Component({
   selector: 'client',
   templateUrl: './client.component.html'
 })
 export class ClientComponent {
-  @Input() company:string;
-  @Input() fullname:string;
-  @Input() gender:string;
-  @Input() email:string;
-  @Input() product:string;
-  @Input() phone:string;
-  @Input() lastUpdate:string;
+  @Input() client: ClientModel;
+  @Output() removeClient:EventEmitter<ClientModel> = new EventEmitter<ClientModel>();
+
+  onRemoveClient() {
+    this.removeClient.emit(this.client);
+  }
 }

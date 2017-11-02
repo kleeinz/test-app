@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavParams } from 'ionic-angular';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AlertController, LoadingController } from 'ionic-angular';
+import { AlertController, LoadingController, NavController } from 'ionic-angular';
 import { GenericService } from '../../../services/generic.service';
 import { ClientModel } from '../../../models/client.model';
 
@@ -19,7 +19,8 @@ export class EditClientPage implements OnInit {
   constructor(private navParams: NavParams,
       private alertController: AlertController,
       private loadingController: LoadingController,
-      private genericService: GenericService) {
+      private genericService: GenericService,
+      private navController: NavController) {
 
   }
 
@@ -42,10 +43,7 @@ export class EditClientPage implements OnInit {
   onAddClient() {
     const value = this.clientForm.value;
     this.genericService.addItem(value.company, value.fullname, value.gender, value.email, value.phone, value.product);
-  }
-
-  onGetClients() {
-    this.genericService.getItems();
+    this.navController.popToRoot();
   }
 
 }
