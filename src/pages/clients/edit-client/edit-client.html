@@ -43,8 +43,8 @@
           <ion-option *ngFor="let product of selectProduct" [value]="product">{{ product }}</ion-option>
         </ion-select>
       </ion-item>
-      <button type="submit" ion-button full color="signin" margin-top>{{ action }} Client</button>
-      <button type="button" ion-button full color="signup" margin-top>Restore</button>
+      <button type="submit" ion-button full color="signin" margin-top [disabled]="!clientForm.valid">{{ action }} Client</button>
+      <button (click)="clientForm.reset()" type="button" ion-button full color="signup" margin-top>Restore</button>
     </form>
   </ion-list>
 </ion-content>

@@ -1,1 +1,25 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="nav" class="title-font-color">
+  <ion-header no-border>
+    <ion-toolbar start>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <button ion-item (click)="onLoad(clientsPage)">
+        <ion-icon name="person" item-left ></ion-icon>
+        Clients
+      </button>
+    </ion-list>
+  </ion-content>
+  <ion-footer text-center>
+    <ion-toolbar>
+      <ion-buttons start>
+        <button ion-button clear color="signup" mini>
+          <ion-icon name="cog"></ion-icon>Logout
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>
+</ion-menu>
+<ion-nav [root]="rootPage" #nav></ion-nav>
