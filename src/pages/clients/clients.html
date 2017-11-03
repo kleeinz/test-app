@@ -1,11 +1,12 @@
 <menu-header title="Clients"></menu-header>
 <ion-content padding margin-top>
+  <button ion-fab name="button"><ion-icon name="add"></ion-icon></button>
   <client (removeClient)="onRemoveClient($event)" *ngFor="let client of clients" [client]="client"></client>
 </ion-content>
-<ion-footer no-border>
+<!-- <ion-footer no-border>
   <ion-toolbar>
-    <ion-buttons end>
+    <ion-buttons center>
       <button ion-fab color="signup" mini (click)="onAddClient()"><ion-icon name="add"></ion-icon></button>
     </ion-buttons>
   </ion-toolbar>
-</ion-footer>
+</ion-footer> -->

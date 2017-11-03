@@ -2,7 +2,7 @@
 <ion-content padding margin-top>
   <ion-list inset margin-top>
     <form [formGroup]="clientForm" (ngSubmit)="onAddClient()">
-      <ion-item class="transparent item-font-color">
+      <ion-item>
         <ion-label>
           <ion-icon name="briefcase"></ion-icon>
         </ion-label>
@@ -14,20 +14,20 @@
         </ion-label>
         <ion-input type="text" placeholder="Full Name" required formControlName="fullname"></ion-input>
       </ion-item>
-      <ion-item class="transparent item-font-color" margin-top>
+      <ion-item margin-top>
         <ion-label>
           <ion-icon name="mail"></ion-icon>
         </ion-label>
         <ion-input type="email" placeholder="Email" required formControlName="email"></ion-input>
       </ion-item>
-      <ion-item class="transparent item-font-color" margin-top>
+      <ion-item margin-top>
         <ion-label>
           <ion-icon name="call"></ion-icon>
         </ion-label>
         <ion-input type="number" placeholder="Phone" required formControlName="phone"></ion-input>
       </ion-item>
 
-      <ion-item class="transparent item-font-color" margin-top >
+      <ion-item margin-top >
         <ion-label>
           <ion-icon name="transgender"></ion-icon>
         </ion-label>
@@ -35,7 +35,7 @@
           <ion-option *ngFor="let gender of selectGender" [value]="gender">{{ gender }}</ion-option>
         </ion-select>
       </ion-item>
-      <ion-item class="transparent item-font-color" margin-top >
+      <ion-item margin-top >
         <ion-label>
           <ion-icon name="pricetags"></ion-icon>
         </ion-label>
@@ -43,8 +43,8 @@
           <ion-option *ngFor="let product of selectProduct" [value]="product">{{ product }}</ion-option>
         </ion-select>
       </ion-item>
-      <button type="submit" ion-button full color="signin" margin-top [disabled]="!clientForm.valid">{{ action }} Client</button>
-      <button (click)="clientForm.reset()" type="button" ion-button full color="signup" margin-top>Restore</button>
+      <button type="submit" ion-button full margin-top [disabled]="!clientForm.valid">{{ action }} Client</button>
+      <button (click)="clientForm.reset()" type="button" ion-button full margin-top>Restore</button>
     </form>
   </ion-list>
 </ion-content>

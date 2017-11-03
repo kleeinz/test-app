@@ -11,7 +11,7 @@ import firebase from 'firebase';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = SigninPage;
+  rootPage:any = ClientsPage;
   clientsPage = ClientsPage;
   // rootPage:any = ClientsPage;
   isAuthenticated = false;
@@ -23,15 +23,15 @@ export class MyApp {
       apiKey: "AIzaSyCx7oTapDY2FubRwmP9zK9CTY5YO6pnmNA",
       authDomain: "test-app-d61e5.firebaseapp.com"
     });
-    firebase.auth().onAuthStateChanged(user => {
-      if(user) {
-        this.isAuthenticated = true;
-        this.nav.setRoot(ClientsPage);
-      } else {
-        this.isAuthenticated = false;
-        this.nav.setRoot(SigninPage);
-      }
-    })
+    // firebase.auth().onAuthStateChanged(user => {
+    //   if(user) {
+    //     this.isAuthenticated = true;
+    //     this.nav.setRoot(ClientsPage);
+    //   } else {
+    //     this.isAuthenticated = false;
+    //     this.nav.setRoot(SigninPage);
+    //   }
+    // });
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.

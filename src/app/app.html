@@ -1,4 +1,4 @@
-<ion-menu [content]="nav" class="title-font-color">
+<ion-menu [content]="nav">
   <ion-header no-border>
     <ion-toolbar start>
       <ion-title>Menu</ion-title>
@@ -7,7 +7,7 @@
   <ion-content>
     <ion-list>
       <button ion-item (click)="onLoad(clientsPage)">
-        <ion-icon name="person" item-left ></ion-icon>
+        <ion-icon name="person" item-left></ion-icon>
         Clients
       </button>
     </ion-list>
@@ -15,7 +15,7 @@
   <ion-footer text-center>
     <ion-toolbar>
       <ion-buttons start>
-        <button ion-button clear color="signup" mini>
+        <button ion-button clear mini>
           <ion-icon name="cog"></ion-icon>Logout
         </button>
       </ion-buttons>

@@ -11,7 +11,6 @@ $font-path: "../assets/fonts";
 // http://ionicframework.com/docs/theming/rtl-support/
 $app-direction: ltr;
 
-
 @import "ionic.globals";
 
 
@@ -21,9 +20,7 @@ $app-direction: ltr;
 // the Sass variables found in Ionic's source scss files.
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
-
-$toolbar-title-color: #FFF;
-$background-color: #383A4C;
+//
 
 
 
@@ -42,8 +39,6 @@ $colors: (
   light:      #f4f4f4,
   dark:       #222,
   warning:    #F5820B,
-  signin:     #28878D,
-  signup:     #1C1D26
 );
 
 
