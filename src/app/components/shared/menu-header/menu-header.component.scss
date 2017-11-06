@@ -1,12 +1,9 @@
 menu-header {
-  margin-bottom:80px;
-  .ion-item-input {
-    border-radius:20px;
-    border:2px solid grey;
-    background: rgba(255,255,255, .5);
+
+  .toolbar-background {
+    background: linear-gradient(100deg, #006F5F, #05A15A);
   }
-  .item-inner {
-    border-bottom-color: transparent !important;
-    box-shadow: none !important;
+  .toolbar-text-color {
+    color: white !important;
   }
 }

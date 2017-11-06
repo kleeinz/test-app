@@ -1,10 +1,11 @@
-<ion-header no-border>
+<ion-header no-border no-margin class="bg-btn-gradient">
   <ion-navbar>
-      <ion-buttons start>
+    <ion-title>{{ title }}</ion-title>
+      <ion-buttons end>
         <button ion-button menuToggle>
-          <ion-icon name="menu"></ion-icon>
+          <ion-icon name="more"></ion-icon>
         </button>
       </ion-buttons>
-      <ion-title>{{ title }}</ion-title>
   </ion-navbar>
+  <menu-content></menu-content>
 </ion-header>

@@ -1,6 +1,5 @@
 <menu-header title="Clients"></menu-header>
 <ion-content margin-top>
-  <menu-content></menu-content>
   <client (removeClient)="onRemoveClient($event)" *ngFor="let client of clients" [client]="client"></client>
 </ion-content>
 <!-- <ion-footer no-border>
