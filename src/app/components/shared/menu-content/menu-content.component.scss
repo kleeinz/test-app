@@ -1,0 +1,17 @@
+menu-content {
+  .ion-item-input {
+    border-radius:20px;
+    border:2px solid grey;
+    background: rgba(255,255,255, .5);
+  }
+
+  .item-inner {
+    border-bottom-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .center-transform {
+    transform:translate(-70%, 70%);
+    left:50%;
+  }
+}

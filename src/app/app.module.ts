@@ -8,7 +8,8 @@ import { HttpModule } from '@angular/http';
 import { MyApp } from './app.component';
 
 // Components
-import { MenuHeaderComponent } from './components/shared/menu-header.component';
+import { MenuHeaderComponent } from './components/shared/menu-header/menu-header.component';
+import { MenuContentComponent } from './components/shared/menu-content/menu-content.component';
 import { ClientComponent } from './components/client/client.component';
 
 // Pages
@@ -29,6 +30,7 @@ import { GenericService } from '../services/generic.service';
     SignupPage,
     ForgotPage,
     MenuHeaderComponent,
+    MenuContentComponent,
     ClientsPage,
     EditClientPage,
     ClientComponent
@@ -45,6 +47,7 @@ import { GenericService } from '../services/generic.service';
     SignupPage,
     ForgotPage,
     MenuHeaderComponent,
+    MenuContentComponent,
     ClientsPage,
     EditClientPage,
     ClientComponent
