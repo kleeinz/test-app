@@ -11,7 +11,7 @@ import firebase from 'firebase';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = ClientsPage;
+  rootPage:any = SigninPage;
   clientsPage = ClientsPage;
   // rootPage:any = ClientsPage;
   isAuthenticated = false;
