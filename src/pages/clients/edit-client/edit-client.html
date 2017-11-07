@@ -43,7 +43,7 @@
           <ion-option *ngFor="let product of selectProduct" [value]="product">{{ product }}</ion-option>
         </ion-select>
       </ion-item>
-      <button type="submit" ion-button full margin-top [disabled]="!clientForm.valid">{{ action }} Client</button>
+      <button type="submit" ion-button full margin-top >{{ action }} Client</button>
       <button (click)="clientForm.reset()" type="button" ion-button full margin-top>Restore</button>
     </form>
   </ion-list>

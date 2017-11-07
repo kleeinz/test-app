@@ -7,6 +7,7 @@ import { ClientModel } from '../../../models/client.model';
 })
 export class ClientComponent {
   @Input() client: ClientModel;
+  @Input() index: number;
   @Output() removeClient:EventEmitter<ClientModel> = new EventEmitter<ClientModel>();
 
   onRemoveClient() {

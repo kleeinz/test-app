@@ -20,10 +20,6 @@ export class ClientsPage {
     this.clients = this.genericService.getItems();
   }
 
-  onAddClient(){
-    this.navCtrl.push(EditClientPage, {action: 'New'});
-  }
-
   onRemoveClient(client: ClientModel) {
     this.genericService.removeItem(client.email);
     this.clients = this.genericService.getItems();

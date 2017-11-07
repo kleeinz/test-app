@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { NavController } from 'ionic-angular';
+import { EditClientPage } from '../../../../pages/clients/edit-client/edit-client';
 
 @Component({
   selector: 'menu-header',
@@ -6,4 +8,12 @@ import { Component, Input } from '@angular/core';
 })
 export class MenuHeaderComponent {
   @Input() title: string;
+
+  constructor(private navCtrl: NavController) {
+
+  }
+
+  onAddClient(){
+    this.navCtrl.push(EditClientPage, {action: 'New'});
+  }
 }
