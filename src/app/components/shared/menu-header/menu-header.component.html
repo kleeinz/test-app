@@ -2,10 +2,12 @@
   <ion-navbar>
       <ion-title>
         {{ title }}
-        <p style="font-size:10px; margin:0px; padding:0px; color:#C2C2C2">100 Contacts</p>
+        <p *ngIf="showContacts" style="font-size:10px; margin:0px; padding:0px; color:#C2C2C2">
+          100 Contacts
+        </p>
       </ion-title>
       <ion-buttons end>
-        <button ion-button (click)="onAddClient()" >
+        <button *ngIf="showAddButton" ion-button (click)="onAddClient()" >
           <ion-icon style="color:#424242" name="add"></ion-icon>
         </button>
         <button (click)="onShowPopover($event)" ion-button>

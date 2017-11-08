@@ -9,6 +9,8 @@ import { PopoverPage } from './popover/popover';
 })
 export class MenuHeaderComponent {
   @Input() title: string;
+  @Input() showContacts: boolean = true;
+  @Input() showAddButton: boolean = false;
 
   constructor(private navCtrl: NavController, private popoverController: PopoverController) {
 

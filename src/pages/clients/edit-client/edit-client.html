@@ -1,50 +1,56 @@
-<menu-header title="{{ action }} Client"></menu-header>
-<ion-content padding margin-top>
-  <ion-list inset margin-top>
-    <form [formGroup]="clientForm" (ngSubmit)="onAddClient()">
-      <ion-item>
-        <ion-label>
-          <ion-icon name="briefcase"></ion-icon>
-        </ion-label>
-        <ion-input type="text" placeholder="Company" required formControlName="company"></ion-input>
-      </ion-item>
-      <ion-item class="transparent item-font-color" margin-top>
-        <ion-label>
-          <ion-icon name="person"></ion-icon>
-        </ion-label>
-        <ion-input type="text" placeholder="Full Name" required formControlName="fullname"></ion-input>
-      </ion-item>
-      <ion-item margin-top>
-        <ion-label>
-          <ion-icon name="mail"></ion-icon>
-        </ion-label>
-        <ion-input type="email" placeholder="Email" required formControlName="email"></ion-input>
-      </ion-item>
-      <ion-item margin-top>
-        <ion-label>
-          <ion-icon name="call"></ion-icon>
-        </ion-label>
-        <ion-input type="number" placeholder="Phone" required formControlName="phone"></ion-input>
-      </ion-item>
-
-      <ion-item margin-top >
-        <ion-label>
-          <ion-icon name="transgender"></ion-icon>
-        </ion-label>
-        <ion-select placeholder="Gender" required formControlName="gender">
-          <ion-option *ngFor="let gender of selectGender" [value]="gender">{{ gender }}</ion-option>
-        </ion-select>
-      </ion-item>
-      <ion-item margin-top >
-        <ion-label>
-          <ion-icon name="pricetags"></ion-icon>
-        </ion-label>
-        <ion-select placeholder="Product" required formControlName="product">
-          <ion-option *ngFor="let product of selectProduct" [value]="product">{{ product }}</ion-option>
-        </ion-select>
-      </ion-item>
-      <button type="submit" ion-button full margin-top >{{ action }} Client</button>
-      <button (click)="clientForm.reset()" type="button" ion-button full margin-top>Restore</button>
-    </form>
-  </ion-list>
+<menu-header title="{{ action }} Client" [showContacts]=false></menu-header>
+<ion-content style="background:#E6E6E6" padding margin-top>
+  <form [formGroup]="clientForm" (ngSubmit)="onAddClient()">
+    <ion-card text-center>
+      <ion-card-header>100 Contacts</ion-card-header>
+    </ion-card>
+    <ion-card padding text-center>
+      <ion-card-content>
+        <ion-list inset>
+          <ion-item>
+            <ion-label>
+              <ion-icon name="briefcase"></ion-icon>
+            </ion-label>
+            <ion-input type="text" placeholder="Company" required formControlName="company"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <ion-icon name="person"></ion-icon>
+            </ion-label>
+            <ion-input type="text" placeholder="Full Name" required formControlName="fullname"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <ion-icon name="mail"></ion-icon>
+            </ion-label>
+            <ion-input type="email" placeholder="Email" required formControlName="email"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <ion-icon name="call"></ion-icon>
+            </ion-label>
+            <ion-input type="number" placeholder="Phone" required formControlName="phone"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <ion-icon name="transgender"></ion-icon>
+            </ion-label>
+            <ion-select placeholder="Gender" required formControlName="gender">
+              <ion-option *ngFor="let gender of selectGender" [value]="gender">{{ gender }}</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <ion-icon name="pricetags"></ion-icon>
+            </ion-label>
+            <ion-select placeholder="Product" required formControlName="product">
+              <ion-option *ngFor="let product of selectProduct" [value]="product">{{ product }}</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+        <button type="submit" ion-button full round>{{ action }} Client</button>
+        <button (click)="clientForm.reset()" type="button" ion-button full round margin-top>Restore</button>
+      </ion-card-content>
+    </ion-card>
+  </form>
 </ion-content>

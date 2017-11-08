@@ -40,7 +40,9 @@ import { GenericService } from '../services/generic.service';
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp, {
+      backButtonText:''
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
