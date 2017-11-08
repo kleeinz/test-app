@@ -1,43 +1,54 @@
-<ion-content padding text-right>
-  <h4 text-center class="text-color">
-    Test<strong>App</strong>
-  </h4>
-  <ion-list inset margin-top>
-    <form #lf="ngForm" (ngSubmit)="onLogin(lf)">
-      <ion-item class="text-color">
-        <ion-label>
-          <ion-icon class="text-color" name="person"></ion-icon>
-        </ion-label>
-        <ion-input class="text-color" type="email" placeholder="Email" required ngModel name="email" clearInput></ion-input>
-      </ion-item>
-      <ion-item margin-top>
-        <ion-label>
-          <ion-icon  class="text-color"name="unlock"></ion-icon>
-        </ion-label>
-        <ion-input type="password" class="text-color" placeholder="Password" required ngModel name="password"></ion-input>
-      </ion-item>
-      <button
-        class="text-color font-clear-btn font-transform"
-        ion-button no-padding small
-        clear margin-top [navPush]="forgotPage">Forgot your password?</button>
-      <button
-        class="bg-btn-gradient font-transform"
-        type="submit"
-        ion-button
-        full
-        margin-top
-        round
-        [disabled]="!lf.valid">Sign in</button>
-    </form>
-  </ion-list>
+<ion-content style="background:#E6E6E6" padding text-right>
+  <ion-card>
+    <ion-card-content>
+      <h4 text-center class="text-color">
+        Test<strong>App</strong>
+      </h4>
+      <ion-list inset margin-top>
+        <form #lf="ngForm" (ngSubmit)="onLogin(lf)">
+          <ion-item class="text-color">
+            <ion-label>
+              <ion-icon class="text-color" name="person"></ion-icon>
+            </ion-label>
+            <ion-input class="text-color" type="email" placeholder="Email" required ngModel name="email" clearInput></ion-input>
+          </ion-item>
+          <ion-item margin-top>
+            <ion-label>
+              <ion-icon  class="text-color"name="unlock"></ion-icon>
+            </ion-label>
+            <ion-input type="password" class="text-color" placeholder="Password" required ngModel name="password"></ion-input>
+          </ion-item>
+          <button
+            class="text-color font-clear-btn font-transform"
+            ion-button no-padding small
+            clear margin-top [navPush]="forgotPage">Forgot your password?</button>
+          <button
+            class="bg-btn-gradient font-transform"
+            type="submit"
+            ion-button
+            full
+            margin-top
+            round
+            [disabled]="!lf.valid">Sign in</button>
+        </form>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
-<!-- <></> -->
-<ion-footer no-border text-center>
-  <ion-label class="text-color">Not a member yet? </ion-label>
-  <button class="text-color font-transform"
-    ion-button
-    medium
-    clear
-    [navPush]="signupPage"><strong>Sign up</strong>
-  </button>
+<ion-footer>
+  <ion-toolbar text-center>
+    
+    <button clear ion-button>Sign up!</button>
+  </ion-toolbar>
 </ion-footer>
+<!-- <ion-footer text-center>
+  <ion-toolbar>
+    <ion-label class="text-color">Not a member yet? </ion-label>
+    <button class="text-color font-transform"
+      ion-button
+      medium
+      clear
+      [navPush]="signupPage"><strong>Sign up</strong>
+    </button>
+  </ion-toolbar>
+</ion-footer> -->
