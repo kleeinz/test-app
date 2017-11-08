@@ -1,13 +1,24 @@
 <ion-card
   style="margin-bottom:0px;"
   [style.margin-top] = "index == 0 ? '15px' : '1px'">
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="../../assets/imgs/user-profile.png">
-      </ion-avatar>
-        <h2>{{ client.company }}</h2>
-        <p>{{ client.fullname }}</p>
-      </ion-item>
+
+    <ion-list no-lines>
+      <ion-item-sliding>
+        <button ion-item>
+          <ion-avatar item-start>
+            <img src="../../assets/imgs/user-profile.png">
+          </ion-avatar>
+            <h2>{{ client.company }}</h2>
+            <p>{{ client.fullname }}</p>
+        </button>
+        <ion-item-options side="right">
+          <button (click)="onRemoveClient()" ion-button color="danger">
+            <ion-icon name="trash"></ion-icon>
+            delete
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
 </ion-card>
 
 <!--
