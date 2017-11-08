@@ -8,8 +8,8 @@
         <button ion-button (click)="onAddClient()" >
           <ion-icon style="color:#424242" name="add"></ion-icon>
         </button>
-        <button ion-button>
-          <ion-icon style="color:#424242" name="more"></ion-icon>
+        <button (click)="onShowPopover($event)" ion-button>
+          <ion-icon style="color:#424242" name="settings"></ion-icon>
         </button>
       </ion-buttons>
   </ion-navbar>

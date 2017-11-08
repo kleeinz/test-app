@@ -1,6 +1,6 @@
 <ion-card
   style="margin-bottom:0px;"
-  [style.margin-top] = "index == 0 ? '15px' : '1px'">
+  [style.margin-top] = "index == 0 ? '15px' : '5px'">
 
     <ion-list no-lines>
       <ion-item-sliding>
@@ -11,18 +11,12 @@
             <h2>{{ client.company }}</h2>
             <p>{{ client.fullname }}</p>
         </button>
-        <ion-item-options side="right">
+        <ion-item-options side="left">
           <button (click)="onRemoveClient()" ion-button color="danger">
             <ion-icon name="trash"></ion-icon>
-            delete
+            Delete
           </button>
         </ion-item-options>
       </ion-item-sliding>
     </ion-list>
 </ion-card>
-
-<!--
-<button (click)="onRemoveClient()" ion-button icon-left clear small color="danger">
-  <ion-icon name="trash"></ion-icon>
-  <div>Delete</div>
-</button> -->
