@@ -25,4 +25,11 @@ export class GenericService{
     });
     this.clients.splice(position, 1);
   }
+
+  filterItems(companySearch) {
+    return this.clients.filter((item) => {
+      return item.company.toLowerCase().indexOf(companySearch.toLowerCase()) > -1;
+    });
+  }
+
 }

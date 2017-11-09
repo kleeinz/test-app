@@ -1,9 +1,25 @@
-<menu-header title="Clients" [showAddButton]=true></menu-header>
+<menu-header
+  title="Clients"
+  [totalContacts]=clients.length
+  [showSettingsButton]=true
+  [showAddButton]=true
+  [showContacts]=true>
+</menu-header>
 <ion-content style="background:#E6E6E6; margin-top:43px;">
-  <client (removeClient)="onRemoveClient($event)" *ngFor="let client of clients; let i = index" [client]="client" [index]="i"></client>
+  <client
+    (removeClient)="onRemoveClient($event)"
+    *ngFor="let client of clients; let i = index"
+    [client]="client"
+    [index]="i">
+  </client>
 </ion-content>
 <ion-footer>
-  <ion-toolbar text-center>
-    <ion-searchbar></ion-searchbar>
+  <ion-toolbar
+    text-center>
+    <ion-searchbar
+      (ionInput)="setFilteredItems()"
+      placeholder="Search company registers..."
+      [(ngModel)]="companySearch">
+    </ion-searchbar>
   </ion-toolbar>
 </ion-footer>

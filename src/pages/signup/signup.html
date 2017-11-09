@@ -1,4 +1,9 @@
-<menu-header title="Sign Up"></menu-header>
+<menu-header
+  title="Sign Up"
+  [showContacts]=false
+  [showSettingsButton]=false
+  [showAddButton]=false>
+</menu-header>
 <ion-content padding margin-top>
   <ion-list inset margin-top>
     <form #sf="ngForm" (ngSubmit)="onSignup(sf)">

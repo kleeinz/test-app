@@ -9,15 +9,17 @@ import { PopoverPage } from './popover/popover';
 })
 export class MenuHeaderComponent {
   @Input() title: string;
-  @Input() showContacts: boolean = true;
+  @Input() showContacts: boolean = false;
   @Input() showAddButton: boolean = false;
+  @Input() showSettingsButton: boolean = false;
+  @Input() totalContacts: number = 0;
 
   constructor(private navCtrl: NavController, private popoverController: PopoverController) {
 
   }
 
   onAddClient(){
-    this.navCtrl.push(EditClientPage, {action: 'New'});
+    this.navCtrl.push(EditClientPage, { action: 'New', totalContacts: this.totalContacts });
   }
 
   onShowPopover(event: MouseEvent) {

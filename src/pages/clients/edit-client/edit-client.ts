@@ -11,6 +11,7 @@ import { ClientModel } from '../../../models/client.model';
 })
 export class EditClientPage implements OnInit {
   private action:string = 'New';
+  private totalContacts: number = 0;
   private selectGender = ['Male', 'Female'];
   private selectProduct = ['PC', 'USB', 'Monitor'];
   clientForm: FormGroup;
@@ -26,6 +27,7 @@ export class EditClientPage implements OnInit {
 
   public ngOnInit(){
     this.action = this.navParams.get('action');
+    this.totalContacts = this.navParams.get('totalContacts');
     this.initializeForm();
   }
 

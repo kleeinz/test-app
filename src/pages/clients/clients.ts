@@ -10,6 +10,7 @@ import { GenericService } from '../../services/generic.service';
 })
 export class ClientsPage {
   clients: ClientModel[] = [];
+  companySearch:string = '';
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -18,6 +19,14 @@ export class ClientsPage {
 
   ionViewWillEnter(){
     this.clients = this.genericService.getItems();
+  }
+
+  ionViewDidLoad() {
+    this.setFilteredItems();
+  }
+
+  setFilteredItems() {
+    this.clients = this.genericService.filterItems(this.companySearch);
   }
 
   onRemoveClient(client: ClientModel) {

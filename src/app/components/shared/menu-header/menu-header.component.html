@@ -2,16 +2,31 @@
   <ion-navbar>
       <ion-title>
         {{ title }}
-        <p *ngIf="showContacts" style="font-size:10px; margin:0px; padding:0px; color:#C2C2C2">
-          100 Contacts
+        <p
+          *ngIf="showContacts"
+          style="font-size:10px; margin:0px; padding:0px; color:#C2C2C2">
+          {{ totalContacts }} Contacts
         </p>
       </ion-title>
-      <ion-buttons end>
-        <button *ngIf="showAddButton" ion-button (click)="onAddClient()" >
-          <ion-icon style="color:#424242" name="add"></ion-icon>
+      <ion-buttons
+        end>
+          <button
+            *ngIf=showAddButton
+            ion-button
+            (click)=onAddClient() >
+              <ion-icon
+                style="color:#424242"
+                name="add">
+              </ion-icon>
         </button>
-        <button (click)="onShowPopover($event)" ion-button>
-          <ion-icon style="color:#424242" name="settings"></ion-icon>
+        <button
+          *ngIf=showSettingsButton
+          (click)=onShowPopover($event)
+          ion-button>
+          <ion-icon
+            style="color:#424242"
+            name="settings">
+          </ion-icon>
         </button>
       </ion-buttons>
   </ion-navbar>
