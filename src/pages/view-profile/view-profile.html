@@ -1,0 +1,31 @@
+<menu-header
+  title="Profile"
+  [showContacts]=false
+  [showSettingsButton]=false
+  [showAddButton]=false>
+</menu-header>
+<ion-content style="background:#E6E6E6" padding-top margin-top align-items-center>
+  <ion-card>
+  <img src="../../assets/imgs/profile.jpg">
+  <ion-card-content no-padding>
+    <ion-card-title style="background:rgba(0,51,102,.3);" text-center>
+      Username
+    </ion-card-title>
+  </ion-card-content>
+  <ion-list no-lines>
+      <button ion-item detail-none>
+        <ion-icon name="people" padding-right></ion-icon>
+        {{ totalContacts }} Contacts
+      </button>
+      <button ion-item detail-none>
+        <ion-icon name="calendar" padding-right></ion-icon>
+        17/02/2010
+      </button>
+      <button ion-item detail-none>
+        <ion-icon name="lock" padding-right></ion-icon>
+        Change Password
+      </button>
+  </ion-list>
+
+</ion-card>
+</ion-content>

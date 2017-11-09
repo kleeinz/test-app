@@ -1,10 +1,10 @@
 <menu-header
   title="{{ action }} Client"
   [showContacts]=false
-  [showSettingsButton]=true
+  [showSettingsButton]=false
   [showAddButton]=false>
 </menu-header>
-<ion-content style="background:#E6E6E6" padding margin-top>
+<ion-content style="background:#E6E6E6" padding-top margin-top margin-bottom>
   <form
     [formGroup]="clientForm"
     (ngSubmit)="onAddClient()">
@@ -15,111 +15,94 @@
     <ion-card
       padding
       text-center>
-      <ion-card-content>
-        <ion-list
-          inset>
-          <ion-item>
-            <ion-label>
-              <ion-icon
-                name="briefcase">
+        <ion-card-header>
+          <ion-label text-center>
+            <ion-icon style="font-size:90px" name="create"></ion-icon>
+            <h4 class="text-color" style="font-size:20px">
+              {{ action }}<strong> Client</strong>
+            </h4>
+          </ion-label>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list
+            inset>
+            <ion-item>
+              <ion-label>
+                <ion-icon
+                  name="briefcase">
+                </ion-icon>
+              </ion-label>
+              <ion-input
+                type="text"
+                placeholder="Company"
+                required
+                formControlName="company">
+              </ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>
+                <ion-icon
+                  name="person">
+                </ion-icon>
+              </ion-label>
+              <ion-input
+                type="text"
+                placeholder="Full Name"
+                required
+                formControlName="fullname">
+              </ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>
+                <ion-icon
+                  name="mail">
+                </ion-icon>
+              </ion-label>
+              <ion-input
+                type="email"
+                placeholder="Email"
+                required
+                formControlName="email">
+              </ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>
+                <ion-icon
+                  name="call">
+                </ion-icon>
+              </ion-label>
+              <ion-input
+                type="number"
+                placeholder="Phone"
+                required
+                formControlName="phone">
+              </ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>
+                <ion-icon
+                name="transgender">
               </ion-icon>
-            </ion-label>
-            <ion-input
-              type="text"
-              placeholder="Company"
-              required
-              formControlName="company">
-            </ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>
-              <ion-icon
-                name="person">
-              </ion-icon>
-            </ion-label>
-            <ion-input
-              type="text"
-              placeholder="Full Name"
-              required
-              formControlName="fullname">
-            </ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>
-              <ion-icon
-                name="mail">
-              </ion-icon>
-            </ion-label>
-            <ion-input
-              type="email"
-              placeholder="Email"
-              required
-              formControlName="email">
-            </ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>
-              <ion-icon
-                name="call">
-              </ion-icon>
-            </ion-label>
-            <ion-input
-              type="number"
-              placeholder="Phone"
-              required
-              formControlName="phone">
-            </ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>
-              <ion-icon
-              name="transgender">
-            </ion-icon>
-            </ion-label>
-            <ion-select
-              placeholder="Gender"
-              required
-              formControlName="gender">
-              <ion-option
-                *ngFor="let gender of selectGender"
-                [value]="gender">
-                  {{ gender }}
-              </ion-option>
-            </ion-select>
-          </ion-item>
-          <ion-item>
-            <ion-label>
-              <ion-icon
-                name="pricetags"></ion-icon>
-            </ion-label>
-            <ion-select
-              placeholder="Product"
-              required
-              formControlName="product">
+              </ion-label>
+              <ion-select
+                required
+                formControlName="gender">
                 <ion-option
-                  *ngFor="let product of selectProduct"
-                  [value]="product">
-                    {{ product }}
-                  </ion-option>
-            </ion-select>
-          </ion-item>
-        </ion-list>
-        <button
-          type="submit"
-          ion-button
-          full
-          round>
-            {{ action }} Client
-          </button>
-        <button
-          (click)="clientForm.reset()"
-          type="button"
-          ion-button
-          full
-          round
-          margin-top>Restore
-        </button>
-      </ion-card-content>
+                  *ngFor="let gender of selectGender"
+                  [value]="gender">
+                    {{ gender }}
+                </ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+          <button
+            type="submit"
+            ion-button
+            full
+            round>
+              {{ action }} Client
+            </button>
+        </ion-card-content>
     </ion-card>
   </form>
 </ion-content>

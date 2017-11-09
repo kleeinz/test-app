@@ -3,10 +3,9 @@ import { ClientModel } from '../models/client.model';
 export class GenericService{
   private clients: ClientModel[] = [];
 
-	addItem(company: string, fullname: string, gender: string, email: string, phone: string, product: string) {
+	addItem(company: string, fullname: string, gender: string, email: string, phone: string) {
     this.clients.push(new ClientModel(
-      company, fullname, gender, email, phone, product
-    ));
+      company, fullname, gender, email, phone ));
     console.log("Service: ", this.clients.slice());
   }
 
@@ -15,8 +14,8 @@ export class GenericService{
   }
 
   updateItem(index: number, company: string,
-    fullname: string, gender: string, email: string, phone: string, product: string) {
-    this.clients[index] = new ClientModel(company, fullname, gender, email, phone, product);
+    fullname: string, gender: string, email: string, phone: string) {
+    this.clients[index] = new ClientModel(company, fullname, gender, email, phone);
   }
 
   removeItem(key: any) {

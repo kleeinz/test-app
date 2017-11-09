@@ -3,8 +3,7 @@ export class ClientModel {
       public fullname:string,
       public gender: string,
       public email: string,
-      public phone: string,
-      public product: string){
+      public phone: string) {
 
   }
 }

@@ -23,7 +23,7 @@ export class MenuHeaderComponent {
   }
 
   onShowPopover(event: MouseEvent) {
-    const popover = this.popoverController.create(PopoverPage);
-    popover.present({ev: event});
+    const popover = this.popoverController.create(PopoverPage, { totalContacts: this.totalContacts });
+    popover.present({ ev: event });
   }
 }

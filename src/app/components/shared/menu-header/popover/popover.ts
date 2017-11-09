@@ -1,15 +1,21 @@
 import { Component } from '@angular/core';
-import { ViewController } from 'ionic-angular';
+import { ViewController, NavParams } from 'ionic-angular';
 import { SigninPage } from '../../../../../pages/signin/signin';
+import { ViewProfilePage } from '../../../../../pages/view-profile/view-profile';
 
 @Component({
   selector: 'page-popover',
   templateUrl: './popover.html'
 })
 export class PopoverPage {
-  signinPage = SigninPage;
-  constructor(private viewCtrl: ViewController) {
 
+  signinPage = SigninPage;
+  viewProfilePage = ViewProfilePage;
+  totalContacts:number = 0;
+
+  constructor(private viewCtrl: ViewController, private navParams: NavParams) {
+      this.totalContacts = this.navParams.get('totalContacts');
+      console.log("totalContacts: ", this.totalContacts);
   }
 
 }

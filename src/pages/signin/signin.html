@@ -1,9 +1,14 @@
-<ion-content style="background:#E6E6E6" padding text-right>
+<ion-content style="background:#E6E6E6" align-items-center>
   <ion-card>
     <ion-card-content>
-      <h4 text-center class="text-color">
-        Test<strong>App</strong>
-      </h4>
+      <ion-card-header>
+        <ion-label text-center>
+          <ion-icon style="font-size:90px" name="ionic"></ion-icon>
+          <h4 class="text-color" style="font-size:20px">
+            Test<strong>App</strong>
+          </h4>
+        </ion-label>
+      </ion-card-header>
       <ion-list inset margin-top>
         <form #lf="ngForm" (ngSubmit)="onLogin(lf)">
           <ion-item class="text-color">
@@ -20,8 +25,14 @@
           </ion-item>
           <button
             class="text-color font-clear-btn font-transform"
-            ion-button no-padding small
-            clear margin-top [navPush]="forgotPage">Forgot your password?</button>
+            ion-button
+            no-padding
+            small
+            clear
+            margin-top
+            [navPush]="forgotPage">
+              Forgot your password?
+          </button>
           <button
             class="bg-btn-gradient font-transform"
             type="submit"

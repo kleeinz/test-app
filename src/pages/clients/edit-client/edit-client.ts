@@ -13,7 +13,6 @@ export class EditClientPage implements OnInit {
   private action:string = 'New';
   private totalContacts: number = 0;
   private selectGender = ['Male', 'Female'];
-  private selectProduct = ['PC', 'USB', 'Monitor'];
   clientForm: FormGroup;
   private clients: ClientModel[] = [];
 
@@ -37,14 +36,13 @@ export class EditClientPage implements OnInit {
       'fullname': new FormControl(null, Validators.required),
       'gender': new FormControl('Male', Validators.required),
       'email': new FormControl(null, Validators.required),
-      'phone': new FormControl(null, Validators.required),
-      'product': new FormControl('Pc', Validators.required),
+      'phone': new FormControl(null, Validators.required)
     });
   }
 
   onAddClient() {
     const value = this.clientForm.value;
-    this.genericService.addItem(value.company, value.fullname, value.gender, value.email, value.phone, value.product);
+    this.genericService.addItem(value.company, value.fullname, value.gender, value.email, value.phone);
     this.navController.popToRoot();
   }
 

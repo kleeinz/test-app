@@ -16,6 +16,7 @@ import { SigninPage } from '../pages/signin/signin';
 import { SignupPage } from '../pages/signup/signup';
 import { ForgotPage } from '../pages/forgot/forgot';
 import { ClientsPage } from '../pages/clients/clients';
+import { ViewProfilePage } from '../pages/view-profile/view-profile';
 import { EditClientPage } from '../pages/clients/edit-client/edit-client';
 import { PopoverPage } from './components/shared/menu-header/popover/popover';
 
@@ -33,7 +34,8 @@ import { GenericService } from '../services/generic.service';
     ClientsPage,
     EditClientPage,
     ClientComponent,
-    PopoverPage
+    PopoverPage,
+    ViewProfilePage
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,8 @@ import { GenericService } from '../services/generic.service';
     ClientsPage,
     EditClientPage,
     ClientComponent,
-    PopoverPage
+    PopoverPage,
+    ViewProfilePage
   ],
   providers: [
     StatusBar,
