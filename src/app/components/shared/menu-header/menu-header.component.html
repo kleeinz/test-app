@@ -9,13 +9,14 @@
         </p>
       </ion-title>
       <ion-buttons
+        class="icon-color"
         end>
           <button
             *ngIf=showAddButton
             ion-button
             (click)=onAddClient() >
               <ion-icon
-                style="color:#424242"
+                class="icon-color"
                 name="add">
               </ion-icon>
         </button>
@@ -24,7 +25,7 @@
           (click)=onShowPopover($event)
           ion-button>
           <ion-icon
-            style="color:#424242"
+            class="icon-color"
             name="settings">
           </ion-icon>
         </button>

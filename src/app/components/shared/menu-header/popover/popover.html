@@ -1,10 +1,10 @@
 <ion-list no-lines no-margin>
-  <button [navPush]="viewProfilePage" [navParams]="totalContacts" style="color:#424242" ion-item detail-none padding-left>
-    <ion-icon name="information-circle" item-end></ion-icon>
+  <button [navPush]="viewProfilePage" [navParams]="totalContacts" ion-item detail-none padding-left>
+    <ion-icon class="color-icon" name="information-circle" item-end></ion-icon>
     Username
   </button>
-  <button style="color:#424242" ion-item detail-none padding-left [navPush]="signinPage">
-    <ion-icon name="power" item-end></ion-icon>
+  <button ion-item detail-none padding-left (click)="onLogout()">
+    <ion-icon class="color-icon" name="power" item-end></ion-icon>
     Logout
   </button>
 </ion-list>

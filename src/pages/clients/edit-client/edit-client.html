@@ -4,21 +4,21 @@
   [showSettingsButton]=false
   [showAddButton]=false>
 </menu-header>
-<ion-content style="background:#E6E6E6" padding-top margin-top margin-bottom>
+<ion-content class="bg-ion-content" padding-top margin-top margin-bottom>
   <form
     [formGroup]="clientForm"
     (ngSubmit)="onAddClient()">
     <ion-card
       text-center>
-      <ion-card-header>{{ totalContacts }} Contacts</ion-card-header>
+      <ion-card-header class="header-title">{{ totalContacts }} Contacts</ion-card-header>
     </ion-card>
     <ion-card
       padding
       text-center>
         <ion-card-header>
           <ion-label text-center>
-            <ion-icon style="font-size:90px" name="create"></ion-icon>
-            <h4 class="text-color" style="font-size:20px">
+            <ion-icon class="header-icon" name="create"></ion-icon>
+            <h4 class="header-title">
               {{ action }}<strong> Client</strong>
             </h4>
           </ion-label>
@@ -96,6 +96,7 @@
             </ion-item>
           </ion-list>
           <button
+            class="bg-btn-gradient"
             type="submit"
             ion-button
             full

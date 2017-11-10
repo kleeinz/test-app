@@ -1,15 +1,12 @@
 <menu-header
-  title="Sign Up"
-  [showContacts]=false
-  [showSettingsButton]=false
-  [showAddButton]=false>
+  title="Sign Up">
 </menu-header>
-<ion-content style="background:#E6E6E6; margin-top:43px;">
+<ion-content class="bg-ion-content" margin-top padding-top>
   <ion-card>
     <ion-card-header>
       <ion-label text-center>
-        <ion-icon style="font-size:90px" name="create"></ion-icon>
-        <h4 style="font-size:20px" class="text-color">
+        <ion-icon class="header-icon" name="create"></ion-icon>
+        <h4 class="header-title">
           Create a new <strong>Account</strong>
         </h4>
       </ion-label>
@@ -21,13 +18,13 @@
             <ion-label>
               <ion-icon name="person"></ion-icon>
             </ion-label>
-            <ion-input type="email" placeholder="Email" required ngModel name="email"></ion-input>
+            <ion-input type="email" placeholder="Put your email" required ngModel name="email"></ion-input>
           </ion-item>
           <ion-item margin-top>
             <ion-label>
               <ion-icon name="unlock"></ion-icon>
             </ion-label>
-            <ion-input type="password" placeholder="Password" required ngModel name="password"></ion-input>
+            <ion-input type="password" placeholder="Choose a password" required ngModel name="password"></ion-input>
           </ion-item>
           <ion-item margin-top>
             <ion-label>
@@ -35,8 +32,7 @@
             </ion-label>
             <ion-input type="password" placeholder="Confirm Password"></ion-input>
           </ion-item>
-          <button type="submit" ion-button full round margin-top [disabled]="!sf.valid">Sign up</button>
-          <button type="button" ion-button full round margin-top (click)="sf.reset()">Restore</button>
+          <button class="bg-btn-gradient" type="submit" ion-button full round margin-top [disabled]="!sf.valid">Sign up</button>
         </form>
       </ion-list>
     </ion-card-content>

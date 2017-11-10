@@ -5,15 +5,15 @@
   [showAddButton]=false>
 </menu-header>
 <ion-content
+  class="bg-ion-content"
   margin-top
   padding-top
-  margin-bottom
-  style="background:#E6E6E6">
+  margin-bottom>
     <ion-card>
       <ion-card-header>
         <ion-label text-center>
-          <ion-icon style="font-size:90px" name="mail-open"></ion-icon>
-          <h4 class="text-color" style="font-size:20px">
+          <ion-icon class="header-icon" name="mail-open"></ion-icon>
+          <h4 class="header-title">
             Send a<strong> Mail</strong>
           </h4>
         </ion-label>
@@ -26,9 +26,9 @@
               <ion-label>
                 <ion-icon name="send"></ion-icon>
               </ion-label>
-              <ion-input type="email" placeholder="Email"></ion-input>
+              <ion-input type="email" placeholder="Put your email here..."></ion-input>
             </ion-item>
-          <button ion-button full round color="signup" margin-top>Recovery</button>
+          <button class="bg-btn-gradient" ion-button full round color="signup" margin-top>Recovery</button>
         </ion-list>
       </ion-card-content>
     </ion-card>

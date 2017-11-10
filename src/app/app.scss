@@ -1,5 +1,67 @@
 // http://ionicframework.com/docs/theming/
+.text-input::-moz-placeholder {
+  color: #246068;
+  opacity:.4;
+}
 
+.text-input:-ms-input-placeholder {
+  color: #246068;
+  opacity:.4;
+}
+
+.text-input::-webkit-input-placeholder {
+  text-indent: 0;
+  color: #246068;
+  opacity:.4;
+}
+
+.item-inner, ion-item {
+  border-bottom-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.bg-btn-gradient {
+  background: linear-gradient(#246068, #027878);
+}
+
+.header-icon {
+  font-size:90px;
+  color:#246068;
+}
+
+.color-icon {
+  color:#246068;
+}
+
+ion-header ion-icon.back-button-icon.icon {
+  color: #FFFFFF;
+}
+
+.icon-color {
+  color:#FFFFFF;
+  font-weight: bold;
+}
+
+.header-title {
+  font-size:20px;
+  color:#246068;
+}
+
+.bg-ion-content {
+  background:#F1F0FF;
+}
+
+.input-wrapper {
+  color:#027878;
+}
+
+.toolbar-background {
+  background: linear-gradient(#246068, #13455C);
+}
+
+.toolbar-title {
+  color:#FFFFFF;
+}
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These

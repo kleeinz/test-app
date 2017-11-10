@@ -11,14 +11,13 @@ import firebase from 'firebase';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = ClientsPage;
+  rootPage:any = SigninPage;
   clientsPage = ClientsPage;
   // rootPage:any = ClientsPage;
   isAuthenticated = false;
   @ViewChild('nav') nav: NavController;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
-              private menuCtrl: MenuController) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     firebase.initializeApp({
       apiKey: "AIzaSyCx7oTapDY2FubRwmP9zK9CTY5YO6pnmNA",
       authDomain: "test-app-d61e5.firebaseapp.com"
@@ -38,10 +37,5 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
-  }
-
-  onLoad(page: any) {
-    this.nav.setRoot(page);
-    this.menuCtrl.close();
   }
 }
