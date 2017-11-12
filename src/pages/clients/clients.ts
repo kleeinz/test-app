@@ -11,6 +11,7 @@ import { GenericService } from '../../services/generic.service';
 export class ClientsPage {
   clients: ClientModel[] = [];
   companySearch:string = '';
+  editClientPage = EditClientPage;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -34,4 +35,8 @@ export class ClientsPage {
     this.clients = this.genericService.getItems();
   }
 
+  onUpdateClient(event: {index:number, client:ClientModel}) {
+    console.log("event: ", event);
+    this.navCtrl.push(this.editClientPage, { action: 'Edit', event: event, totalContacts: this.clients.length });
+  }
 }

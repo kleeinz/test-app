@@ -8,6 +8,7 @@
 <ion-content style="background:#E6E6E6; margin-top:43px;">
   <client
     (removeClient)="onRemoveClient($event)"
+    (updateClient)="onUpdateClient($event)"
     *ngFor="let client of clients; let i = index"
     [client]="client"
     [index]="i">
