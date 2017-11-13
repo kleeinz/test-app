@@ -9,6 +9,7 @@
   <client
     (updateClient)="onUpdateClient($event)"
     (removeClient)="onRemoveClient($event)"
+    (lookClient)="onLookClient($event)"
     *ngFor="let firebaseClient of firebaseClients; let i = index"
     [firebaseClient]="firebaseClient"
     [index]="i">

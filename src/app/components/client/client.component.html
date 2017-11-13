@@ -4,7 +4,7 @@
 
     <ion-list no-lines>
       <ion-item-sliding>
-        <button ion-item (press)="onUpdateClient(firebaseClient)">
+        <button ion-item (click)="onLookClient(firebaseClient)" (press)="onUpdateClient(firebaseClient)">
           <ion-avatar item-start>
             <img src="../../assets/imgs/user-profile.png">
           </ion-avatar>

@@ -19,6 +19,7 @@ export class EditClientPage implements OnInit {
   private data: any;
   private client: ClientModel;
   private index: number;
+  private isDisabled: boolean = false;
 
   constructor(private navParams: NavParams,
       private genericService: GenericService,
@@ -30,10 +31,11 @@ export class EditClientPage implements OnInit {
 
   public ngOnInit(){
     this.action = this.navParams.get('action');
+    this.isDisabled = this.navParams.get('isDisabled');
     this.totalContacts = this.navParams.get('totalContacts');
     this.data = this.navParams.get('event');
-    this.loggingService.debug("Data: " + this.data);
-    if (this.action === 'Edit') {
+
+    if (this.action === 'Edit' || this.action === 'Look') {
       this.client = this.data.client;
       this.index = this.data.index;
     }
@@ -41,13 +43,14 @@ export class EditClientPage implements OnInit {
   }
 
   private initializeForm() {
+    console.log(this.action)
     let company = null;
     let fullname = null;
     let gender = 'Male';
     let email = null;
     let phone = null;
 
-    if(this.action === 'Edit') {
+    if(this.action === 'Edit' || this.action === 'Look') {
       company = this.client.company;
       fullname = this.client.fullname;
       gender = this.client.gender
@@ -56,11 +59,11 @@ export class EditClientPage implements OnInit {
     }
 
     this.clientForm = new FormGroup({
-      'company': new FormControl(company, Validators.required),
-      'fullname': new FormControl(fullname, Validators.required),
-      'gender': new FormControl(gender, Validators.required),
-      'email': new FormControl(email, Validators.required),
-      'phone': new FormControl(phone, Validators.required)
+      'company': new FormControl({value: company, disabled: this.isDisabled}, Validators.required),
+      'fullname': new FormControl({value: fullname, disabled: this.isDisabled}, Validators.required),
+      'gender': new FormControl({value: gender, disabled: this.isDisabled}, Validators.required),
+      'email': new FormControl({value: email, disabled: this.isDisabled}, Validators.required),
+      'phone': new FormControl({value: phone, disabled: this.isDisabled}, Validators.required)
     });
   }
 

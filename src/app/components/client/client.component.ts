@@ -11,6 +11,7 @@ export class ClientComponent {
   @Input() index: number;
   @Output() removeClient:EventEmitter<FirebaseClientModel> = new EventEmitter<FirebaseClientModel>();
   @Output() updateClient:EventEmitter<FirebaseClientModel> = new EventEmitter<FirebaseClientModel>();
+  @Output() lookClient:EventEmitter<FirebaseClientModel> = new EventEmitter<FirebaseClientModel>();
 
   onRemoveClient() {
     this.removeClient.emit(this.firebaseClient);
@@ -18,5 +19,9 @@ export class ClientComponent {
 
   onUpdateClient() {
     this.updateClient.emit(this.firebaseClient);
+  }
+
+  onLookClient() {
+    this.lookClient.emit(this.firebaseClient);
   }
 }

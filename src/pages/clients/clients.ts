@@ -28,8 +28,15 @@ export class ClientsPage {
     this.getItems();
   }
 
-  public getItems() {
+  ionViewDidLoad() {
+    this.setFilteredItems();
+  }
 
+  setFilteredItems() {
+    this.firebaseClients = this.genericService.filterItems(this.companySearch);
+  }
+
+  getItems() {
     this.authService.getActiveUser().getToken()
         .then((token) => {
           this.genericService.getItems(token)
@@ -39,15 +46,11 @@ export class ClientsPage {
                 this.loggingService.error(error);
               })
         });
-
   }
 
-  ionViewDidLoad() {
-    this.setFilteredItems();
-  }
-
-  setFilteredItems() {
-    this.firebaseClients = this.genericService.filterItems(this.companySearch);
+  onLookClient(event: FirebaseClientModel) {
+    console.log(event);
+    this.navCtrl.push(this.editClientPage, { action: 'Look', event: event, totalContacts: this.firebaseClients.length, isDisabled: true });
   }
 
   onRemoveClient(event: FirebaseClientModel) {
