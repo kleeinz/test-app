@@ -28,18 +28,12 @@ export class ClientsPage {
   }
 
   private getItems() {
+
     this.authService.getActiveUser().getToken()
         .then((token) => {
           this.genericService.getItems2(token)
-              .subscribe((clientList: ClientModel[]) => {
-                this.loggingService.info('Getting data');
-                if(clientList) {
-
-
-                } else {
-                
-                  this.clients = [];
-                }
+              .subscribe((response) => {
+                console.log("Respuesta: " + JSON.stringify(response));
               }, (error) => {
                 this.loggingService.error(error);
               })

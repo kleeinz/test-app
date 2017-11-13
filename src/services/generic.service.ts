@@ -34,11 +34,13 @@ export class GenericService{
     const userId = this.authService.getActiveUser().uid;
     return this.http.get('https://test-app-d61e5.firebaseio.com/' + userId + '/clients.json?auth=' + token)
       .map((response) => {
-        return response.json();
-      })
-      .do((data) => {
-        console.log("data: " + data);
-        this.clients = data;
+
+        let clientsList: ClientModel[];
+        for (let key in response.json()) {
+          this.clients.push(response.json()[key]);
+        }
+        console.log("lista: ", this.clients);
+        return this.clients;
       });
   }
 
