@@ -16,7 +16,6 @@ export class EditClientPage implements OnInit {
   private totalContacts: number = 0;
   private selectGender = ['Male', 'Female'];
   clientForm: FormGroup;
-  // private clients: ClientModel[] = [];
   private data: any;
   private client: ClientModel;
   private index: number;
@@ -33,7 +32,6 @@ export class EditClientPage implements OnInit {
     this.action = this.navParams.get('action');
     this.totalContacts = this.navParams.get('totalContacts');
     this.data = this.navParams.get('event');
-    console.log("data: ", this.data);
     this.loggingService.debug("Data: " + this.data);
     if (this.action === 'Edit') {
       this.client = this.data.client;
@@ -68,24 +66,12 @@ export class EditClientPage implements OnInit {
 
   onAddClient() {
     const value = this.clientForm.value;
-    if (this.action === 'Edit') {
-      this.genericService.updateItem(this.index, value.company, value.fullname, value.gender, value.email, value.phone);
-      this.navController.popToRoot();
-    } else {
-      this.genericService.addItem(value.company, value.fullname, value.gender, value.email, value.phone);
-      this.navController.popToRoot();
-    }
-  }
-
-  onAddClient2() {
-    const value = this.clientForm.value;
     const updateClient = new ClientModel(value.company, value.fullname, value.gender, value.email, value.phone);
     if (this.action === 'Edit') {
         this.authService.getActiveUser().getToken()
           .then((token: string) => {
-              this.genericService.updateItem2(token, this.data.key, updateClient)
+              this.genericService.updateItem(token, this.data.key, updateClient)
                   .subscribe(() => {
-                    this.loggingService.debug('Success');
                     this.navController.popToRoot();
                   }, error => {
                       console.log(error);
@@ -96,11 +82,10 @@ export class EditClientPage implements OnInit {
     } else {
       this.authService.getActiveUser().getToken()
           .then((token: string) => {
-              this.genericService.addItem2(token,
+              this.genericService.addItem(token,
                   new ClientModel(value.company, value.fullname, value.gender, value.email, value.phone))
                   .subscribe(
                     () =>{
-                      this.loggingService.debug('Success');
                       this.navController.popToRoot();
                     },
                     error => {

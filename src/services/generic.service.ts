@@ -16,12 +16,7 @@ export class GenericService{
 
   }
 
-	addItem(company: string, fullname: string, gender: string, email: string, phone: string) {
-    this.clients.push(new ClientModel(
-      company, fullname, gender, email, phone ));
-  }
-
-  addItem2(token:string, client:ClientModel) {
+  addItem(token:string, client:ClientModel) {
     const userId = this.authService.getActiveUser().uid;
     return this.http.post('https://test-app-d61e5.firebaseio.com/' + userId + '/clients.json?auth=' + token, client)
       .map((response) => {
@@ -30,13 +25,8 @@ export class GenericService{
 
   }
 
-  getItems() {
-    return this.clients.slice();
-  }
-
-  getItems2(token: string):Observable<FirebaseClientModel[]> {
+  getItems(token: string):Observable<FirebaseClientModel[]> {
     this.firebaseClientModel = [];
-  //  this.clients = [];
     const userId = this.authService.getActiveUser().uid;
     return this.http.get('https://test-app-d61e5.firebaseio.com/' + userId + '/clients.json?auth=' + token)
       .map((response) => {
@@ -47,36 +37,20 @@ export class GenericService{
       });
   }
 
-  updateItem(index: number, company: string,
-    fullname: string, gender: string, email: string, phone: string) {
-    this.clients[index] = new ClientModel(company, fullname, gender, email, phone);
-  }
-
-  updateItem2(token: string, key: string, client: ClientModel) {
+  updateItem(token: string, key: string, client: ClientModel) {
     const userId = this.authService.getActiveUser().uid;
-    console.log("key: ", key);
-    console.log("client: ", client);
     return this.http
               .put('https://test-app-d61e5.firebaseio.com/' + userId + '/clients/' + key + '.json?auth=' + token,
               client).map((response) => {
-                console.log("response: " + response);
                 return response.json();
-              }, error=> console.log(error));
+              });
   }
 
-  removeItem(key: any) {
-    const position = this.clients.findIndex((clientEl: ClientModel) => {
-      return clientEl.email == key;
-    });
-    this.clients.splice(position, 1);
-  }
-
-  removeItem2(token: string, key: string) {
+  removeItem(token: string, key: string) {
     const userId = this.authService.getActiveUser().uid;
     return this.http
               .delete('https://test-app-d61e5.firebaseio.com/' + userId + '/clients/' + key + '.json?auth=' + token)
               .map((response) => {
-                console.log("response: " + response);
                 return response.json();
               });
   }

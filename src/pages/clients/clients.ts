@@ -32,7 +32,7 @@ export class ClientsPage {
 
     this.authService.getActiveUser().getToken()
         .then((token) => {
-          this.genericService.getItems2(token)
+          this.genericService.getItems(token)
               .subscribe((response: FirebaseClientModel[]) => {
                 return (this.firebaseClients = response);
               }, (error) => {
@@ -51,23 +51,19 @@ export class ClientsPage {
   }
 
   onRemoveClient(event: FirebaseClientModel) {
-    console.log(event);
     this.authService.getActiveUser().getToken()
         .then((token) => {
-          this.genericService.removeItem2(token, event.key)
+          this.genericService.removeItem(token, event.key)
               .subscribe((response) => {
                 this.getItems();
               }, (error) => {
                 this.loggingService.error(error);
               })
     });
-    //this.genericService.removeItem(client.email);
-    //this.clients = this.genericService.getItems();
-    //this.getItems();
+
   }
 
   onUpdateClient(event: FirebaseClientModel) {
-    console.log("event: ", event);
     this.navCtrl.push(this.editClientPage, { action: 'Edit', event: event, totalContacts: this.firebaseClients.length });
   }
 }
