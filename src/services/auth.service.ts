@@ -9,4 +9,12 @@ export class AuthService {
   public signin(email: string, password: string) {
     return firebase.auth().signInWithEmailAndPassword(email, password);
   }
+
+  public logout() {
+    firebase.auth().signOut();
+  }
+
+  public getActiveUser() {
+    return firebase.auth().currentUser;
+  }
 }

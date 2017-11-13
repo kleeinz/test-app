@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NavParams } from 'ionic-angular';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AlertController, LoadingController, NavController } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { GenericService } from '../../../services/generic.service';
+import { LoggingService } from '../../../services/logging.service';
+import { AuthService } from '../../../services/auth.service';
 import { ClientModel } from '../../../models/client.model';
 
 @Component({
@@ -20,10 +22,10 @@ export class EditClientPage implements OnInit {
   private index: number;
 
   constructor(private navParams: NavParams,
-      private alertController: AlertController,
-      private loadingController: LoadingController,
       private genericService: GenericService,
-      private navController: NavController) {
+      private navController: NavController,
+      private authService: AuthService,
+      private loggingService: LoggingService) {
 
   }
 
@@ -31,7 +33,7 @@ export class EditClientPage implements OnInit {
     this.action = this.navParams.get('action');
     this.totalContacts = this.navParams.get('totalContacts');
     this.data = this.navParams.get('event');
-    console.log("Data: ", this.data);
+    this.loggingService.debug("Data: " + this.data);
     if (this.action === 'Edit') {
       this.client = this.data.client;
       this.index = this.data.index;
@@ -71,6 +73,29 @@ export class EditClientPage implements OnInit {
     } else {
       this.genericService.addItem(value.company, value.fullname, value.gender, value.email, value.phone);
       this.navController.popToRoot();
+    }
+  }
+
+  onAddClient2() {
+    const value = this.clientForm.value;
+    if (this.action === 'Edit') {
+      this.genericService.updateItem(this.index, value.company, value.fullname, value.gender, value.email, value.phone);
+      this.navController.popToRoot();
+    } else {
+      this.authService.getActiveUser().getToken()
+          .then((token: string) => {
+              this.genericService.addItem2(token,
+                  new ClientModel(value.company, value.fullname, value.gender, value.email, value.phone))
+                  .subscribe(
+                    () =>{
+                      this.loggingService.debug('Success');
+                      this.navController.popToRoot();
+                    },
+                    error => {
+                      console.log(error);
+                    }
+                  )
+          })
     }
   }
 
