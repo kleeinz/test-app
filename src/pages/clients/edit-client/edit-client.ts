@@ -77,8 +77,6 @@ export class EditClientPage implements OnInit {
                       console.log(error);
                   });
           });
-      // this.genericService.updateItem(this.index, value.company, value.fullname, value.gender, value.email, value.phone);
-      // this.navController.popToRoot();
     } else {
       this.authService.getActiveUser().getToken()
           .then((token: string) => {
