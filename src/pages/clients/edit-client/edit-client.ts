@@ -33,6 +33,7 @@ export class EditClientPage implements OnInit {
     this.action = this.navParams.get('action');
     this.totalContacts = this.navParams.get('totalContacts');
     this.data = this.navParams.get('event');
+    console.log("data: ", this.data);
     this.loggingService.debug("Data: " + this.data);
     if (this.action === 'Edit') {
       this.client = this.data.client;
@@ -78,9 +79,20 @@ export class EditClientPage implements OnInit {
 
   onAddClient2() {
     const value = this.clientForm.value;
+    const updateClient = new ClientModel(value.company, value.fullname, value.gender, value.email, value.phone);
     if (this.action === 'Edit') {
-      this.genericService.updateItem(this.index, value.company, value.fullname, value.gender, value.email, value.phone);
-      this.navController.popToRoot();
+        this.authService.getActiveUser().getToken()
+          .then((token: string) => {
+              this.genericService.updateItem2(token, this.data.key, updateClient)
+                  .subscribe(() => {
+                    this.loggingService.debug('Success');
+                    this.navController.popToRoot();
+                  }, error => {
+                      console.log(error);
+                  });
+          });
+      // this.genericService.updateItem(this.index, value.company, value.fullname, value.gender, value.email, value.phone);
+      // this.navController.popToRoot();
     } else {
       this.authService.getActiveUser().getToken()
           .then((token: string) => {
@@ -95,7 +107,7 @@ export class EditClientPage implements OnInit {
                       console.log(error);
                     }
                   )
-          })
+          });
     }
   }
 

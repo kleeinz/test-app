@@ -4,12 +4,12 @@
 
     <ion-list no-lines>
       <ion-item-sliding>
-        <button ion-item (press)="onUpdateClient(client)">
+        <button ion-item (press)="onUpdateClient(firebaseClient)">
           <ion-avatar item-start>
             <img src="../../assets/imgs/user-profile.png">
           </ion-avatar>
-            <h2>{{ client.company }}</h2>
-            <p>{{ client.fullname }}</p>
+            <h2>{{ firebaseClient.client.company }}</h2>
+            <p>{{ firebaseClient.client.fullname }}</p>
         </button>
         <ion-item-options side="left">
           <button (click)="onRemoveClient()" ion-button color="danger">

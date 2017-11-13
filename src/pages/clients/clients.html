@@ -1,16 +1,16 @@
 <menu-header
   title="Clients"
-  [totalContacts]=clients.length
+  [totalContacts]=firebaseClients.length
   [showSettingsButton]=true
   [showAddButton]=true
   [showContacts]=true>
 </menu-header>
 <ion-content style="background:#E6E6E6; margin-top:43px;">
   <client
-    (removeClient)="onRemoveClient($event)"
     (updateClient)="onUpdateClient($event)"
-    *ngFor="let client of clients; let i = index"
-    [client]="client"
+    (removeClient)="onRemoveClient($event)"
+    *ngFor="let firebaseClient of firebaseClients; let i = index"
+    [firebaseClient]="firebaseClient"
     [index]="i">
   </client>
 </ion-content>
@@ -19,7 +19,7 @@
     text-center>
     <ion-searchbar
       (ionInput)="setFilteredItems()"
-      placeholder="Search company registers..."
+      placeholder="Search registers by company..."
       [(ngModel)]="companySearch">
     </ion-searchbar>
   </ion-toolbar>

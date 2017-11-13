@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { EditClientPage } from './edit-client/edit-client';
 import { ClientModel } from '../../models/client.model';
+import { FirebaseClientModel } from '../../models/firebase-client.model';
 import { GenericService } from '../../services/generic.service';
 import { AuthService } from '../../services/auth.service';
 import { LoggingService } from '../../services/logging.service';
@@ -14,6 +15,7 @@ export class ClientsPage {
   clients: ClientModel[] = [];
   companySearch:string = '';
   editClientPage = EditClientPage;
+  firebaseClients: FirebaseClientModel[] = [];
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -24,20 +26,20 @@ export class ClientsPage {
 
   ionViewWillEnter(){
     this.getItems();
-  //  this.clients = this.genericService.getItems();
   }
 
-  private getItems() {
+  public getItems() {
 
     this.authService.getActiveUser().getToken()
         .then((token) => {
           this.genericService.getItems2(token)
-              .subscribe((response) => {
-                console.log("Respuesta: " + JSON.stringify(response));
+              .subscribe((response: FirebaseClientModel[]) => {
+                return (this.firebaseClients = response);
               }, (error) => {
                 this.loggingService.error(error);
               })
         });
+
   }
 
   ionViewDidLoad() {
@@ -45,17 +47,27 @@ export class ClientsPage {
   }
 
   setFilteredItems() {
-    this.clients = this.genericService.filterItems(this.companySearch);
+    this.firebaseClients = this.genericService.filterItems(this.companySearch);
   }
 
-  onRemoveClient(client: ClientModel) {
-    this.genericService.removeItem(client.email);
+  onRemoveClient(event: FirebaseClientModel) {
+    console.log(event);
+    this.authService.getActiveUser().getToken()
+        .then((token) => {
+          this.genericService.removeItem2(token, event.key)
+              .subscribe((response) => {
+                this.getItems();
+              }, (error) => {
+                this.loggingService.error(error);
+              })
+    });
+    //this.genericService.removeItem(client.email);
     //this.clients = this.genericService.getItems();
-    this.getItems();
+    //this.getItems();
   }
 
-  onUpdateClient(event: {index:number, client:ClientModel}) {
+  onUpdateClient(event: FirebaseClientModel) {
     console.log("event: ", event);
-    this.navCtrl.push(this.editClientPage, { action: 'Edit', event: event, totalContacts: this.clients.length });
+    this.navCtrl.push(this.editClientPage, { action: 'Edit', event: event, totalContacts: this.firebaseClients.length });
   }
 }
