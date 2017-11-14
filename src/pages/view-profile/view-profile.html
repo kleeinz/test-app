@@ -9,7 +9,7 @@
   <img src="../../assets/imgs/profile.jpg">
   <ion-card-content no-padding>
     <ion-card-title style="background:rgba(0,51,102,.3);" text-center>
-      Username
+      {{ username }}
     </ion-card-title>
   </ion-card-content>
   <ion-list no-lines>
@@ -19,7 +19,7 @@
       </button>
       <button ion-item detail-none>
         <ion-icon name="calendar" padding-right></ion-icon>
-        17/02/2010
+        {{ creationDate }}
       </button>
       <button ion-item detail-none>
         <ion-icon name="lock" padding-right></ion-icon>

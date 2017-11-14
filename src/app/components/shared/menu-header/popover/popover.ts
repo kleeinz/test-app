@@ -21,13 +21,22 @@ export class PopoverPage {
               private authService: AuthService,
               private loggingService: LoggingService) {
       this.totalContacts = this.navParams.get('totalContacts');
-      loggingService.info("totalContacts: " + this.totalContacts);
+      // loggingService.info("totalContacts: " + this.totalContacts);
   }
 
   onLogout() {
     // this.navController.push(this.signinPage);
     // this.navController.setRoot(this.signinPage);
     this.authService.logout();
+    this.viewCtrl.dismiss();
+  }
+
+  onGoProfilePage() {
+    let firebaseUser = this.authService.getActiveUser();
+    this.navController.push(this.viewProfilePage, {
+        username: firebaseUser.email,
+        totalContacts: this.totalContacts,
+        creationDate: firebaseUser.metadata.creationTime });
     this.viewCtrl.dismiss();
   }
 

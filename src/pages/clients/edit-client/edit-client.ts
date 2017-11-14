@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavParams } from 'ionic-angular';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { NavController } from 'ionic-angular';
+import { NavController, LoadingController, AlertController } from 'ionic-angular';
 import { GenericService } from '../../../services/generic.service';
 import { LoggingService } from '../../../services/logging.service';
 import { AuthService } from '../../../services/auth.service';
@@ -25,7 +25,9 @@ export class EditClientPage implements OnInit {
       private genericService: GenericService,
       private navController: NavController,
       private authService: AuthService,
-      private loggingService: LoggingService) {
+      private loggingService: LoggingService,
+      private loadingController: LoadingController,
+      private alertController: AlertController) {
 
   }
 
@@ -69,15 +71,27 @@ export class EditClientPage implements OnInit {
 
   onAddClient() {
     const value = this.clientForm.value;
+    const loading = this.loadingController.create({
+      content: 'Doing changes to clients...'
+    });
+    loading.present();
     const updateClient = new ClientModel(value.company, value.fullname, value.gender, value.email, value.phone);
     if (this.action === 'Edit') {
         this.authService.getActiveUser().getToken()
           .then((token: string) => {
               this.genericService.updateItem(token, this.data.key, updateClient)
                   .subscribe(() => {
+                    loading.dismiss();
                     this.navController.popToRoot();
                   }, error => {
-                      console.log(error);
+                    loading.dismiss();
+                    const alert = this.alertController.create({
+                      title: 'Operation failed!',
+                      message: error,
+                      buttons: ['Ok']
+                    });
+                    alert.present();
+
                   });
           });
     } else {
@@ -87,10 +101,17 @@ export class EditClientPage implements OnInit {
                   new ClientModel(value.company, value.fullname, value.gender, value.email, value.phone))
                   .subscribe(
                     () =>{
+                      loading.dismiss();
                       this.navController.popToRoot();
                     },
                     error => {
-                      console.log(error);
+                      loading.dismiss();
+                      const alert = this.alertController.create({
+                        title: 'Operation failed!',
+                        message: error,
+                        buttons: ['Ok']
+                      });
+                      alert.present();
                     }
                   )
           });

@@ -16,14 +16,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class ViewProfilePage {
 
   totalContacts:number = 0;
+  username:string = 'Username';
+  creationDate:string = 'Mon, 13 Nov 1992 22:04:10 GMT';
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
   }
 
   ionViewDidLoad() {
-    this.totalContacts = this.navParams.data;
-    console.log(this.navParams.data);
+    this.totalContacts = this.navParams.get('totalContacts');
+    this.username = this.navParams.get('username');
+    this.creationDate = this.navParams.get('creationDate');
   }
 
 }

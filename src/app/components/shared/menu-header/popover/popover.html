@@ -1,5 +1,5 @@
 <ion-list no-lines no-margin>
-  <button [navPush]="viewProfilePage" [navParams]="totalContacts" ion-item detail-none padding-left>
+  <button (click)="onGoProfilePage()" ion-item detail-none padding-left>
     <ion-icon class="color-icon" name="information-circle" item-end></ion-icon>
     Username
   </button>
