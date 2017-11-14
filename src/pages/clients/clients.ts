@@ -30,25 +30,12 @@ export class ClientsPage implements OnInit {
                     () => {
                       this.firebaseClients = [];
                       this.getItems();
-                }
-);
+                });
   }
 
   public ngOnInit() {
     this.firebaseClients = [];
     this.getItems();
-  }
-
-  ionViewWillEnter(){
-
-  }
-
-  ionViewDidLoad() {
-    this.setFilteredItems();
-  }
-
-  setFilteredItems() {
-    this.firebaseClients = this.genericService.filterItems(this.companySearch);
   }
 
   getItems() {
@@ -88,5 +75,9 @@ export class ClientsPage implements OnInit {
 
   onUpdateClient(event: FirebaseClientModel) {
     this.navCtrl.push(this.editClientPage, { action: 'Edit', event: event, totalContacts: this.firebaseClients.length });
+  }
+
+  onCompanySearch(event: string) {
+    this.firebaseClients = this.genericService.filterItems(event);
   }
 }

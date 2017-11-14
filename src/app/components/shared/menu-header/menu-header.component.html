@@ -31,4 +31,9 @@
         </button>
       </ion-buttons>
   </ion-navbar>
+  <ion-searchbar
+    *ngIf="showSearchBar"
+    placeholder="Search registers by company..."
+    (ionInput)="onChange()" [(ngModel)]="searchInput">
+  </ion-searchbar>
 </ion-header>

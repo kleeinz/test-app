@@ -3,7 +3,9 @@
   [totalContacts]=firebaseClients.length
   [showSettingsButton]=true
   [showAddButton]=true
-  [showContacts]=true>
+  [showContacts]=true
+  [showSearchBar]=true
+  (companySearch)="onCompanySearch($event)">
 </menu-header>
 <ion-content style="background:#E6E6E6; margin-top:43px;">
   <client
@@ -16,12 +18,7 @@
   </client>
 </ion-content>
 <ion-footer>
-  <ion-toolbar
-    text-center>
-    <ion-searchbar
-      (ionInput)="setFilteredItems()"
-      placeholder="Search registers by company..."
-      [(ngModel)]="companySearch">
-    </ion-searchbar>
+  <ion-toolbar>
+
   </ion-toolbar>
 </ion-footer>
