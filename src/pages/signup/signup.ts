@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-import { LoadingController, AlertController } from 'ionic-angular';
+import { LoadingController, AlertController, NavController } from 'ionic-angular';
 
 @Component({
   selector: 'page-signup',
@@ -11,7 +11,8 @@ export class SignupPage {
 
   constructor(private authService: AuthService,
     private loadingController: LoadingController,
-    private alertController: AlertController) {
+    private alertController: AlertController,
+    private navController: NavController) {
 
   }
 
