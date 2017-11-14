@@ -24,13 +24,13 @@
             <ion-label>
               <ion-icon name="unlock"></ion-icon>
             </ion-label>
-            <ion-input type="password" placeholder="Choose a password" required ngModel name="password"></ion-input>
+            <ion-input type="password" placeholder="Choose a password" required ngModel name="password" passwordValidate="confirm" reverse="true"></ion-input>
           </ion-item>
           <ion-item margin-top>
             <ion-label>
               <ion-icon name="unlock"></ion-icon>
             </ion-label>
-            <ion-input type="password" placeholder="Confirm Password" required ngModel name="confirm" validateEqual="password"></ion-input>
+            <ion-input type="password" placeholder="Confirm Password" required ngModel name="confirm" passwordValidate="password"></ion-input>
           </ion-item>
           <button class="bg-btn-gradient" type="submit" ion-button full round margin-top [disabled]="!sf.valid">Sign up</button>
         </form>

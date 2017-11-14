@@ -11,6 +11,9 @@ import { MyApp } from './app.component';
 import { MenuHeaderComponent } from './components/shared/menu-header/menu-header.component';
 import { ClientComponent } from './components/client/client.component';
 
+// Directives
+import { PasswordValidatorDirective } from './directives/password-validator/password-validator.directive';
+
 // Pages
 import { SigninPage } from '../pages/signin/signin';
 import { SignupPage } from '../pages/signup/signup';
@@ -36,7 +39,8 @@ import { LoggingService } from '../services/logging.service';
     EditClientPage,
     ClientComponent,
     PopoverPage,
-    ViewProfilePage
+    ViewProfilePage,
+    PasswordValidatorDirective
   ],
   imports: [
     BrowserModule,
