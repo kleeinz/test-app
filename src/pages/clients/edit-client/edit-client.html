@@ -97,6 +97,7 @@
           </ion-list>
           <button
             *ngIf="!isDisabled"
+            [disabled]="!clientForm.valid"
             class="bg-btn-gradient"
             type="submit"
             ion-button

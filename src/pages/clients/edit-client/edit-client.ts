@@ -45,7 +45,6 @@ export class EditClientPage implements OnInit {
   }
 
   private initializeForm() {
-    console.log(this.action)
     let company = null;
     let fullname = null;
     let gender = 'Male';
