@@ -95,10 +95,7 @@ export class ClientsPage implements OnInit {
         },
         {
           text: 'Cancel',
-          role: 'cancel',
-          handler: () => {
-            console.log('Cancel clicked');
-          }
+          role: 'cancel'
         }
       ]
     });
