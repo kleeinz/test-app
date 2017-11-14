@@ -17,4 +17,8 @@ export class AuthService {
   public getActiveUser() {
     return firebase.auth().currentUser;
   }
+
+  public getUserByEmail(email: string) {
+    return firebase.auth().sendPasswordResetEmail(email);
+  }
 }

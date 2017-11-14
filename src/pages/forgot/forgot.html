@@ -10,26 +10,28 @@
   padding-top
   margin-bottom>
     <ion-card>
-      <ion-card-header>
-        <ion-label text-center>
-          <ion-icon class="header-icon" name="mail-open"></ion-icon>
-          <h4 class="header-title">
-            Send a<strong> Mail</strong>
-          </h4>
-        </ion-label>
-      </ion-card-header>
-      <ion-card-content>
-        <ion-list
-          inset
-          margin-top>
-            <ion-item>
-              <ion-label>
-                <ion-icon name="send"></ion-icon>
-              </ion-label>
-              <ion-input type="email" placeholder="Put your email here..."></ion-input>
-            </ion-item>
-          <button class="bg-btn-gradient" ion-button full round color="signup" margin-top>Recovery</button>
-        </ion-list>
-      </ion-card-content>
+      <form #ff="ngForm" (ngSubmit)="onForgot(ff)">
+        <ion-card-header>
+          <ion-label text-center>
+            <ion-icon class="header-icon" name="mail-open"></ion-icon>
+            <h4 class="header-title">
+              Send a<strong> Mail</strong>
+            </h4>
+          </ion-label>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list
+            inset
+            margin-top>
+              <ion-item>
+                <ion-label>
+                  <ion-icon name="send"></ion-icon>
+                </ion-label>
+                <ion-input type="email" placeholder="Put your email here..." required ngModel name="email"></ion-input>
+              </ion-item>
+            <button type="submit" [disabled]="!ff.valid" class="bg-btn-gradient" ion-button full round color="signup" margin-top>Recovery</button>
+          </ion-list>
+        </ion-card-content>
+      </form>
     </ion-card>
 </ion-content>

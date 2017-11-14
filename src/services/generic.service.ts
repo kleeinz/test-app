@@ -26,10 +26,10 @@ export class GenericService{
   }
 
   getItems(token: string):Observable<FirebaseClientModel[]> {
-    this.firebaseClientModel = [];
     const userId = this.authService.getActiveUser().uid;
     return this.http.get('https://test-app-d61e5.firebaseio.com/' + userId + '/clients.json?auth=' + token)
       .map((response) => {
+        this.firebaseClientModel = [];
         for (let key in response.json()) {
           this.firebaseClientModel.push({key: key, client: response.json()[key]});
         }

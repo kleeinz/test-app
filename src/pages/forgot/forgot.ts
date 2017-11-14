@@ -1,25 +1,39 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { AuthService } from '../../services/auth.service';
+import { NgForm } from '@angular/forms';
 
-/**
- * Generated class for the ForgotPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
-@IonicPage()
 @Component({
   selector: 'page-forgot',
   templateUrl: 'forgot.html',
 })
 export class ForgotPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public authService: AuthService,
+              private loadingController: LoadingController,
+              private alertController: AlertController) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ForgotPage');
+
+  public onForgot(forgotForm: NgForm) {
+    const loading = this.loadingController.create({
+      content: 'Sending a email to ' + forgotForm.value.email + '...'
+    });
+    loading.present();
+    this.authService.getUserByEmail(forgotForm.value.email).then(() => {
+      loading.dismiss();
+      this.navCtrl.popToRoot();
+    }, (error) => {
+      loading.dismiss();
+      const alert = this.alertController.create({
+        title: 'Email not found',
+        message: error,
+        buttons: ['Ok']
+      });
+      alert.present();
+    });
   }
 
 }
