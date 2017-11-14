@@ -5,7 +5,9 @@ import { NavController, LoadingController, AlertController } from 'ionic-angular
 import { GenericService } from '../../../services/generic.service';
 import { LoggingService } from '../../../services/logging.service';
 import { AuthService } from '../../../services/auth.service';
+import { SharedService } from '../../../services/shared.service';
 import { ClientModel } from '../../../models/client.model';
+import { ClientsPage } from '../clients';
 
 @Component({
   selector:'page-edit-client',
@@ -27,7 +29,8 @@ export class EditClientPage implements OnInit {
       private authService: AuthService,
       private loggingService: LoggingService,
       private loadingController: LoadingController,
-      private alertController: AlertController) {
+      private alertController: AlertController,
+      private sharedService: SharedService) {
 
   }
 
@@ -82,6 +85,7 @@ export class EditClientPage implements OnInit {
                   .subscribe(() => {
                     loading.dismiss();
                     this.navController.popToRoot();
+                    this.refreshData();
                   }, error => {
                     loading.dismiss();
                     const alert = this.alertController.create({
@@ -102,6 +106,7 @@ export class EditClientPage implements OnInit {
                     () =>{
                       loading.dismiss();
                       this.navController.popToRoot();
+                      this.refreshData();
                     },
                     error => {
                       loading.dismiss();
@@ -116,5 +121,10 @@ export class EditClientPage implements OnInit {
           });
     }
   }
+
+  private refreshData() {
+    this.sharedService.callComponentMethod();
+  }
+
 
 }

@@ -27,6 +27,7 @@ import { PopoverPage } from './components/shared/menu-header/popover/popover';
 import { AuthService } from '../services/auth.service';
 import { GenericService } from '../services/generic.service';
 import { LoggingService } from '../services/logging.service';
+import { SharedService } from '../services/shared.service';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { LoggingService } from '../services/logging.service';
     AuthService,
     GenericService,
     LoggingService,
+    SharedService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ViewController, NavParams, NavController } from 'ionic-angular';
+import { ViewController, NavParams, NavController, LoadingController } from 'ionic-angular';
 import { SigninPage } from '../../../../../pages/signin/signin';
 import { ViewProfilePage } from '../../../../../pages/view-profile/view-profile';
 import { AuthService } from '../../../../../services/auth.service';
@@ -19,15 +19,18 @@ export class PopoverPage {
               private navParams: NavParams,
               private navController: NavController,
               private authService: AuthService,
-              private loggingService: LoggingService) {
+              private loggingService: LoggingService,
+              private loadingController: LoadingController) {
       this.totalContacts = this.navParams.get('totalContacts');
-      // loggingService.info("totalContacts: " + this.totalContacts);
   }
 
   onLogout() {
-    // this.navController.push(this.signinPage);
-    // this.navController.setRoot(this.signinPage);
+    const loading = this.loadingController.create({
+      content: 'Exiting from the application...'
+    });
+    loading.present();
     this.authService.logout();
+    loading.dismiss();
     this.viewCtrl.dismiss();
   }
 

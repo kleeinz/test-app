@@ -1,17 +1,18 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { Component, OnInit } from '@angular/core';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { EditClientPage } from './edit-client/edit-client';
 import { ClientModel } from '../../models/client.model';
 import { FirebaseClientModel } from '../../models/firebase-client.model';
 import { GenericService } from '../../services/generic.service';
 import { AuthService } from '../../services/auth.service';
 import { LoggingService } from '../../services/logging.service';
+import { SharedService } from '../../services/shared.service';
 
 @Component({
   selector: 'page-clients',
   templateUrl: 'clients.html',
 })
-export class ClientsPage {
+export class ClientsPage implements OnInit {
   clients: ClientModel[] = [];
   companySearch:string = '';
   editClientPage = EditClientPage;
@@ -21,11 +22,25 @@ export class ClientsPage {
               public navParams: NavParams,
               private genericService: GenericService,
               private authService: AuthService,
-              private loggingService: LoggingService) {
+              private loggingService: LoggingService,
+              private loadingController: LoadingController,
+              private sharedService: SharedService) {
+
+                this.sharedService.componentMethodCalled.subscribe(
+                    () => {
+                      this.firebaseClients = [];
+                      this.getItems();
+                }
+);
+  }
+
+  public ngOnInit() {
+    this.firebaseClients = [];
+    this.getItems();
   }
 
   ionViewWillEnter(){
-    this.getItems();
+
   }
 
   ionViewDidLoad() {
@@ -37,11 +52,17 @@ export class ClientsPage {
   }
 
   getItems() {
+    const loading = this.loadingController.create({
+      content: 'Loading information...'
+    });
+    loading.present();
     this.authService.getActiveUser().getToken()
         .then((token) => {
           this.genericService.getItems(token)
               .subscribe((response: FirebaseClientModel[]) => {
-                return (this.firebaseClients = response);
+                this.firebaseClients = response;
+                loading.dismiss();
+                return this.firebaseClients;
               }, (error) => {
                 this.loggingService.error(error);
               })
@@ -49,7 +70,6 @@ export class ClientsPage {
   }
 
   onLookClient(event: FirebaseClientModel) {
-    console.log(event);
     this.navCtrl.push(this.editClientPage, { action: 'Look', event: event, totalContacts: this.firebaseClients.length, isDisabled: true });
   }
 
