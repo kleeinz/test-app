@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { EditClientPage } from './edit-client/edit-client';
 import { ClientModel } from '../../models/client.model';
 import { FirebaseClientModel } from '../../models/firebase-client.model';
@@ -24,7 +24,8 @@ export class ClientsPage implements OnInit {
               private authService: AuthService,
               private loggingService: LoggingService,
               private loadingController: LoadingController,
-              private sharedService: SharedService) {
+              private sharedService: SharedService,
+              private alertController: AlertController) {
 
                 this.sharedService.componentMethodCalled.subscribe(
                     () => {
@@ -79,5 +80,28 @@ export class ClientsPage implements OnInit {
 
   onCompanySearch(event: string) {
     this.firebaseClients = this.genericService.filterItems(event);
+  }
+
+  onConfirmDelete(event: FirebaseClientModel) {
+    let alert = this.alertController.create({
+    title: 'Are you sure?',
+    message: 'Do you want to delete this item?',
+      buttons: [
+        {
+          text: 'Delete',
+          handler: () => {
+            this.onRemoveClient(event);
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 }

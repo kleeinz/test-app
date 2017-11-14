@@ -10,7 +10,7 @@
 <ion-content style="background:#E6E6E6; margin-top:43px;">
   <client
     (updateClient)="onUpdateClient($event)"
-    (removeClient)="onRemoveClient($event)"
+    (removeClient)="onConfirmDelete($event)"
     (lookClient)="onLookClient($event)"
     *ngFor="let firebaseClient of firebaseClients; let i = index"
     [firebaseClient]="firebaseClient"
