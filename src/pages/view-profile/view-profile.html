@@ -21,7 +21,7 @@
         <ion-icon name="calendar" padding-right></ion-icon>
         {{ creationDate }}
       </button>
-      <button ion-item detail-none>
+      <button ion-item detail-none (press)="onChangePassword()">
         <ion-icon name="lock" padding-right></ion-icon>
         Change Password
       </button>

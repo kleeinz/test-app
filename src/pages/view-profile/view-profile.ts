@@ -1,14 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { AuthService } from '../../services/auth.service';
 
-/**
- * Generated class for the ViewProfilePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
-@IonicPage()
 @Component({
   selector: 'page-view-profile',
   templateUrl: 'view-profile.html',
@@ -19,7 +12,10 @@ export class ViewProfilePage {
   username:string = 'Username';
   creationDate:string = 'Mon, 13 Nov 1992 22:04:10 GMT';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              private alertController: AlertController,
+              private authService: AuthService) {
 
   }
 
@@ -27,6 +23,45 @@ export class ViewProfilePage {
     this.totalContacts = this.navParams.get('totalContacts');
     this.username = this.navParams.get('username');
     this.creationDate = this.navParams.get('creationDate');
+  }
+
+  onChangePassword() {
+    let alert = this.alertController.create({
+      title: 'Change Password',
+      inputs:[
+        {
+          name: 'current',
+          placeholder: 'Current Password'
+        },
+        {
+          name: 'newPass',
+          placeholder: 'New Password'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Change',
+          handler: (data) => {
+            console.log(data);
+            this.authService.updatePassword(data.current, data.newPass)
+                .then(() => {
+                  console.log('success')
+                }, (error) => {
+                  console.log(error);
+                });
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        }
+      ]
+    });
+    alert.present().then(()=> {
+      const firstInput: any = document.querySelector('ion-alert input');
+	    firstInput.focus();
+	    return;
+    });
   }
 
 }

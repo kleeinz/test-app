@@ -21,4 +21,21 @@ export class AuthService {
   public getUserByEmail(email: string) {
     return firebase.auth().sendPasswordResetEmail(email);
   }
+
+  public updatePassword(currentPassword:any, newPassword: string) {
+    let user = this.getActiveUser();
+    console.log(user.email);
+    console.log(newPassword);
+    let credential = firebase.auth.EmailAuthProvider
+      .credential(
+        user.email,
+        currentPassword
+    );
+    return user.reauthenticateWithCredential(credential)
+            .then(()=> {
+              user.updatePassword(newPassword);
+            }, (error) => {
+              console.log(error);
+            });
+  }
 }
