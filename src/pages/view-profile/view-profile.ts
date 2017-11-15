@@ -31,11 +31,13 @@ export class ViewProfilePage {
       inputs:[
         {
           name: 'current',
-          placeholder: 'Current Password'
+          placeholder: 'Current Password',
+          type: 'password'
         },
         {
           name: 'newPass',
-          placeholder: 'New Password'
+          placeholder: 'New Password',
+          type: 'password'
         }
       ],
       buttons: [
