@@ -40,16 +40,11 @@ export class ClientsPage implements OnInit {
   }
 
   getItems() {
-    const loading = this.loadingController.create({
-      content: 'Loading information...'
-    });
-    loading.present();
     this.authService.getActiveUser().getToken()
         .then((token) => {
           this.genericService.getItems(token)
               .subscribe((response: FirebaseClientModel[]) => {
                 this.firebaseClients = response;
-                loading.dismiss();
                 return this.firebaseClients;
               }, (error) => {
                 this.loggingService.error(error);
