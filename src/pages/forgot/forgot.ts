@@ -19,7 +19,7 @@ export class ForgotPage {
 
   public onForgot(forgotForm: NgForm) {
     const loading = this.loadingController.create({
-      content: 'Sending a email to ' + forgotForm.value.email + '...'
+      content: 'Sending an email to ' + forgotForm.value.email + '...'
     });
     loading.present();
     this.authService.getUserByEmail(forgotForm.value.email).then(() => {
